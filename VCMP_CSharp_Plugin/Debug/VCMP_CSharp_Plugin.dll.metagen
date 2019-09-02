@@ -1,0 +1,21 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly VCMP_CSharp_Plugin, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class VCMPCSharpPlugin.ScriptCompiler: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ClassName : Public
+    Boolean HasScripts : Public
+    System.Collections.Generic.List`1[System.String] Files : Public, Static
+    System.Collections.Generic.List`1[System.String] Assemblies : Public, Static
+  Methods:
+    Initialize(): PrivateScope, Public, HideBySig
+    CompileAll(): PrivateScope, Public, HideBySig

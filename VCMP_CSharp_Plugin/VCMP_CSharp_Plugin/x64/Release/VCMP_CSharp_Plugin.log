@@ -1,0 +1,5 @@
+﻿  CPlayer.cpp
+c:\users\athanatos\source\repos\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.h(15): warning C4717: 'VCMPCSharpPlugin::CPlayer::Name::get': recursive on all control paths, function will cause runtime stack overflow
+c:\users\athanatos\source\repos\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.h(17): warning C4717: 'VCMPCSharpPlugin::CPlayer::ID::get': recursive on all control paths, function will cause runtime stack overflow
+     Creating library C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.lib and object C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.exp
+  VCMP_CSharp_Plugin.vcxproj -> C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.dll

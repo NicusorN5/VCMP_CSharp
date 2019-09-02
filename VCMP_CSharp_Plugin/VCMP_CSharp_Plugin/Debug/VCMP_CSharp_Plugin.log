@@ -1,0 +1,7 @@
+﻿  Main.cpp
+  VCMP_CSharp_Plugin.cpp
+c:\users\athanatos\source\repos\vcmp_csharp_plugin\vcmp_csharp_plugin\vcmp_csharp_plugin.cpp(103): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  Generating Code...
+  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+     Creating library C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\Debug\VCMP_CSharp_Plugin.lib and object C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\Debug\VCMP_CSharp_Plugin.exp
+  VCMP_CSharp_Plugin.vcxproj -> C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\Debug\VCMP_CSharp_Plugin.dll
