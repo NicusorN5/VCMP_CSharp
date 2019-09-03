@@ -105,3 +105,13 @@ char* CLIStringToCharA(String ^ str)
 	result[i + 1] = 0;
 	return result;
 }
+
+String ^ CharATOCLIString(char * str)
+{
+	String^ result = "";
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		result += str[i];
+	}
+	return result;
+}

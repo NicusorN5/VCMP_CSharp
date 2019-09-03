@@ -2,6 +2,6 @@
 #include "CObject.h"
 
 
-CObject::CObject()
+VCMPCSharpPlugin::CObject::CObject()
 {
 }

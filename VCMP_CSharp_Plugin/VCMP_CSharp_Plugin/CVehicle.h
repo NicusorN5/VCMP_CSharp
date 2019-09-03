@@ -1,6 +1,8 @@
 #pragma once
-ref class CVehicle
+namespace VCMPCSharpPlugin
 {
-
-};
-
+	public ref class CVehicle
+	{
+		CVehicle();
+	};
+}

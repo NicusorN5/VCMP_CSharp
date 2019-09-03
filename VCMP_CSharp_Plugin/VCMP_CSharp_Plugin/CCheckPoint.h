@@ -1,7 +1,11 @@
 #pragma once
-ref class CCheckPoint
+
+namespace VCMPCSharpPlugin
 {
-public:
-	CCheckPoint();
-};
+	public ref class CCheckPoint
+	{
+	public:
+		CCheckPoint();
+	};
+}
 

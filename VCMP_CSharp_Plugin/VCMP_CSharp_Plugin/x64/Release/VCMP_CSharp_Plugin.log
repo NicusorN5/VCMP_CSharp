@@ -1,5 +1,6 @@
 ﻿  CPlayer.cpp
-c:\users\athanatos\source\repos\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.h(15): warning C4717: 'VCMPCSharpPlugin::CPlayer::Name::get': recursive on all control paths, function will cause runtime stack overflow
-c:\users\athanatos\source\repos\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.h(17): warning C4717: 'VCMPCSharpPlugin::CPlayer::ID::get': recursive on all control paths, function will cause runtime stack overflow
-     Creating library C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.lib and object C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.exp
-  VCMP_CSharp_Plugin.vcxproj -> C:\Users\Athanatos\source\repos\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.dll
+c:\users\athanatos\documents\github\vcmp_csharp\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.cpp(21): warning C4018: '<': signed/unsigned mismatch
+c:\users\athanatos\documents\github\vcmp_csharp\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.h(28): warning C4717: 'VCMPCSharpPlugin::CPlayer::ID::get': recursive on all control paths, function will cause runtime stack overflow
+c:\users\athanatos\documents\github\vcmp_csharp\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.cpp(28): warning C4715: 'VCMPCSharpPlugin::CPlayer::FindPlayer': not all control paths return a value
+     Creating library C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.lib and object C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.exp
+  VCMP_CSharp_Plugin.vcxproj -> C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.dll

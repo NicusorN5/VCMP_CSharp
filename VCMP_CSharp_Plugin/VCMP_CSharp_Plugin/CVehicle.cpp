@@ -2,6 +2,6 @@
 #include "CVehicle.h"
 
 
-CVehicle::CVehicle()
+VCMPCSharpPlugin::CVehicle::CVehicle()
 {
 }

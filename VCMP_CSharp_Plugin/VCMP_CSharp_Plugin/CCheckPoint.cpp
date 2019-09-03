@@ -2,6 +2,6 @@
 #include "CCheckPoint.h"
 
 
-CCheckPoint::CCheckPoint()
+VCMPCSharpPlugin::CCheckPoint::CCheckPoint()
 {
 }

@@ -30,3 +30,4 @@ namespace VCMPCSharpPlugin {
 	};
 }
 char* CLIStringToCharA(String ^ str);
+String^ CharATOCLIString(char *str);

@@ -2,14 +2,14 @@
 #include "Vector.h"
 
 
-Vector::Vector()
+VCMPCSharpPlugin::Vector::Vector()
 {
 	this->x = 0;
 	this->y = 0;
 	this->z = 0;
 }
 
-Vector^ Vector::operator+=(Vector v)
+VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator+=(Vector v)
 {
 	this->x += v.x;
 	this->y += v.y;
@@ -17,7 +17,7 @@ Vector^ Vector::operator+=(Vector v)
 	return this;
 }
 
-Vector^ Vector::operator-=(Vector v)
+VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator-=(Vector v)
 {
 	this->x -= v.x;
 	this->y -= v.y;
@@ -25,7 +25,7 @@ Vector^ Vector::operator-=(Vector v)
 	return this;
 }
 
-Vector^ Vector::operator/=(Vector v)
+VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator/=(Vector v)
 {
 	this->x /= v.x;
 	this->y /= v.y;
@@ -33,7 +33,7 @@ Vector^ Vector::operator/=(Vector v)
 	return this;
 }
 
-Vector^ Vector::operator/=(float scalar)
+VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator/=(float scalar)
 {
 	this->x /= scalar;
 	this->y /= scalar;
@@ -41,7 +41,7 @@ Vector^ Vector::operator/=(float scalar)
 	return this;
 }
 
-Vector^ Vector::operator*=(Vector v)
+VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator*=(Vector v)
 {
 	this->x /= v.x;
 	this->y /= v.y;
@@ -49,7 +49,7 @@ Vector^ Vector::operator*=(Vector v)
 	return this;
 }
 
-Vector^ Vector::operator*=(float scalar)
+VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator*=(float scalar)
 {
 	this->x /= scalar;
 	this->y /= scalar;

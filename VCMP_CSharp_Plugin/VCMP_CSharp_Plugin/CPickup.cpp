@@ -2,6 +2,6 @@
 #include "CPickup.h"
 
 
-CPickup::CPickup()
+VCMPCSharpPlugin::CPickup::CPickup()
 {
 }

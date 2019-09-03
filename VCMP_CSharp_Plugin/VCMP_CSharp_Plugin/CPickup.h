@@ -1,7 +1,10 @@
 #pragma once
-ref class CPickup
+namespace VCMPCSharpPlugin
 {
-public:
-	CPickup();
-};
+	public ref class CPickup
+	{
+	public:
+		CPickup();
+	};
+}
 

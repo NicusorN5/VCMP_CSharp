@@ -9,6 +9,22 @@ Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e0
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class VCMPCSharpPlugin.CCheckPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class VCMPCSharpPlugin.CObject: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class VCMPCSharpPlugin.Color: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Byte, Byte, Byte): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Byte Red : Public
+    Byte Green : Public
+    Byte Blue : Public
+  Methods:
+    ToUint(): PrivateScope, Public, HideBySig
+    FromUInt(UInt32): PrivateScope, Public, HideBySig
+Class VCMPCSharpPlugin.CPickup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class VCMPCSharpPlugin.ScriptCompiler: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -20,11 +36,111 @@ Class VCMPCSharpPlugin.ScriptCompiler: AutoLayout, AnsiClass, Class, Public, Bef
     Initialize(): PrivateScope, Public, HideBySig
     CompileAll(): PrivateScope, Public, HideBySig
 Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:
+    Int32 Skin 'get set' : 
+    Int32 Team 'get set' : 
+    Int32 Class 'get ' : 
+    Int32 UniqueWorld 'get ' : 
+    Int32 SecondaryWorld 'get set' : 
+    Int32 World 'get set' : 
+    Byte DrunkLevel 'get set' : 
+    Boolean ChatTags 'get set' : 
+    Boolean HasMarker 'get set' : 
+    Boolean CanAttack 'get set' : 
+    Boolean MarkersShown 'get set' : 
+    Boolean Widescreen 'get set' : 
+    Boolean GreenScanlines 'get set' : 
+    Boolean WhiteScanlines 'get set' : 
+    Boolean CanDriveBy 'get set' : 
+    Boolean Fronzen 'get set' : 
+    Int32 State 'get ' : 
+    Int32 UniqueID 'get ' : 
+    Boolean Connected 'get ' : 
+    System.String UID2 'get ' : 
+    System.String UID 'get ' : 
+    System.String IP 'get ' : 
+    Boolean Admin 'get set' : 
+    Int32 Action 'get ' : 
     Int32 ID   'get ' : 
     System.String Name 'get set' : 
   Methods:
     set_Name(String): PrivateScope, Public, HideBySig, SpecialName
     get_Name(): PrivateScope, Public, HideBySig, SpecialName
     get_ID(): PrivateScope, Public, HideBySig, SpecialName
+    get_Action(): PrivateScope, Public, HideBySig, SpecialName
+    get_Admin(): PrivateScope, Public, HideBySig, SpecialName
+    set_Admin(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_IP(): PrivateScope, Public, HideBySig, SpecialName
+    get_UID(): PrivateScope, Public, HideBySig, SpecialName
+    get_UID2(): PrivateScope, Public, HideBySig, SpecialName
+    Kick(): PrivateScope, Public, HideBySig
+    Ban(): PrivateScope, Public, HideBySig
+    FindPlayer(String): PrivateScope, Public, Static, HideBySig
+    FindPlayer(Int32): PrivateScope, Public, Static, HideBySig
+    get_Connected(): PrivateScope, Public, HideBySig, SpecialName
+    PlayerStreamedToPlayer(CPlayer): PrivateScope, Public, HideBySig
+    get_UniqueID(): PrivateScope, Public, HideBySig, SpecialName
+    get_State(): PrivateScope, Public, HideBySig, SpecialName
+    get_Fronzen(): PrivateScope, Public, HideBySig, SpecialName
+    set_Fronzen(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_CanDriveBy(): PrivateScope, Public, HideBySig, SpecialName
+    set_CanDriveBy(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_WhiteScanlines(): PrivateScope, Public, HideBySig, SpecialName
+    set_WhiteScanlines(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_GreenScanlines(): PrivateScope, Public, HideBySig, SpecialName
+    set_GreenScanlines(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_Widescreen(): PrivateScope, Public, HideBySig, SpecialName
+    set_Widescreen(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_MarkersShown(): PrivateScope, Public, HideBySig, SpecialName
+    set_MarkersShown(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_CanAttack(): PrivateScope, Public, HideBySig, SpecialName
+    set_CanAttack(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_HasMarker(): PrivateScope, Public, HideBySig, SpecialName
+    set_HasMarker(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_ChatTags(): PrivateScope, Public, HideBySig, SpecialName
+    set_ChatTags(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_DrunkLevel(): PrivateScope, Public, HideBySig, SpecialName
+    set_DrunkLevel(Byte): PrivateScope, Public, HideBySig, SpecialName
+    get_World(): PrivateScope, Public, HideBySig, SpecialName
+    set_World(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_SecondaryWorld(): PrivateScope, Public, HideBySig, SpecialName
+    set_SecondaryWorld(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_UniqueWorld(): PrivateScope, Public, HideBySig, SpecialName
+    WorldCompatible(Int32): PrivateScope, Public, HideBySig
+    get_Class(): PrivateScope, Public, HideBySig, SpecialName
+    get_Team(): PrivateScope, Public, HideBySig, SpecialName
+    set_Team(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Skin(): PrivateScope, Public, HideBySig, SpecialName
+    set_Skin(Int32): PrivateScope, Public, HideBySig, SpecialName
+    op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
+    op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
+Struct VCMPCSharpPlugin.PlayerState: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    VCMPCSharpPlugin.PlayerState None = 0 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState Normal = 1 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState Aim = 2 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState Driver = 3 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState Passenger = 4 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState EnterDriver = 5 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState EnterPassenger = 6 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState Exit = 7 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerState Unspawned = 8 : Public, Static, Literal, HasDefault
+Class VCMPCSharpPlugin.CVehicle: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class VCMPCSharpPlugin.Vector: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Single, Single, Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Single x : Public
+    Single y : Public
+    Single z : Public
+  Methods:
+    op_AdditionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_SubtractionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_DivisionAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
+    op_DivisionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_MultiplicationAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
+    op_MultiplicationAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName

@@ -1,7 +1,10 @@
 #pragma once
-ref class CObject
+namespace VCMPCSharpPlugin
 {
-public:
-	CObject();
-};
+	public ref class CObject
+	{
+	public:
+		CObject();
+	};
+}
 
