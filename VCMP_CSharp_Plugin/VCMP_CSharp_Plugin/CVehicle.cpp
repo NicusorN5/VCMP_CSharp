@@ -4,4 +4,11 @@
 
 VCMPCSharpPlugin::CVehicle::CVehicle()
 {
+
 }
+/*
+VCMPCSharpPlugin::CPlayer ^ VCMPCSharpPlugin::CVehicle::GetPlayerFromSlot()
+{
+
+}
+*/

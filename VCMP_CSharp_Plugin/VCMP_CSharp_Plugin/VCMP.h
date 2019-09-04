@@ -580,7 +580,7 @@ typedef struct {
 	/* GetLastError: vcmpErrorNoSuchEntity */
 	vcmpPlayerVehicle(*GetPlayerInVehicleStatus) (int32_t playerId);
 	/* GetLastError: vcmpErrorNoSuchEntity */
-	int32_t(*GetPlayerInVehicleSlot) (int32_t playerId);
+	int32_t(*GetPlayerInVehicleSlot) (int32_t playerId); //???
 	/* GetLastError: vcmpErrorNoSuchEntity */
 	int32_t(*GetPlayerVehicleId) (int32_t playerId);
 

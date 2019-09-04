@@ -3,13 +3,14 @@
 #include "VCMP_CSharp_Plugin.h"
 #include "Color.h"
 #include "Vector.h"
-
+#include "CVehicle.h"
+//Before you compiain, i know this class is supposed to be filled with null-checks of the player instance. Ok bye.
 using namespace System;
 namespace VCMPCSharpPlugin
 {
 	public ref class CPlayer
 	{
-		CPlayer() {};
+		CPlayer();
 	public:
 		CPlayer(int ID);
 		property String^ Name 
@@ -27,12 +28,14 @@ namespace VCMPCSharpPlugin
 				return r;
 			}
 		}
-		property int ID {int get() { return this->ID; }}
-		property int Action 
-		{
+		property int ID {
 			int get()
 			{
-				return api->GetPlayerAction(this->ID);
+				return this->ID;
+			}
+			private: void set(int v)
+			{
+				this->Connected = api->IsPlayerConnected(v);
 			}
 		}
 		property bool Admin 
@@ -89,6 +92,7 @@ namespace VCMPCSharpPlugin
 			{
 				return api->IsPlayerConnected(this->ID);
 			}
+		private: void set(bool value) {}
 		}
 		bool PlayerStreamedToPlayer(CPlayer^ p);
 		property int UniqueID
@@ -98,7 +102,7 @@ namespace VCMPCSharpPlugin
 				return api->GetPlayerKey(this->ID);
 			}
 		}
-		/* We're using int this time, since I get errors I cant fic reeeee
+		/* We're using int this time, since I get errors I cant fix reeeee
 		property PlayerState State
 		{
 			PlayerState get()
@@ -406,6 +410,209 @@ namespace VCMPCSharpPlugin
 				api->SetPlayerPosition(this->ID, pos->x, pos->y, pos->z);
 			}
 		}
+		property Vector^ Speed
+		{
+			Vector^ get()
+			{
+				float *x, *y, *z;
+				api->GetPlayerSpeed(this->ID, x, y, z);
+				Vector^ v = gcnew Vector(*x, *y, *z); //I dont think we need to delete this because we use C# garbage collector.
+				return v;
+			}
+			void set(Vector^ pos)
+			{
+				api->SetPlayerSpeed(this->ID, pos->x, pos->y, pos->z);
+			}
+		}
+		void AddSpeed(Vector ^s);
+		property float Angle
+		{
+			float get()
+			{
+				return api->GetPlayerHeading(this->ID);
+			}
+			void set(float v)
+			{
+				api->SetPlayerHeading(this->ID, v);
+			}
+		}
+		void Teleport(Vector^ pos, float angle);
+		void SetTransparency(uint8_t alpha, int fadetime);
+		property uint8_t Alpha
+		{
+			uint8_t get()
+			{
+				return api->GetPlayerAlpha(this->ID);
+			}
+		}
+		property Vector^ AimDirection
+		{
+			Vector^ get()
+			{
+				float *x, *y, *z;
+				api->GetPlayerAimDirection(this->ID, x, y, z);
+				Vector^ a = gcnew Vector(*x, *y, *z);
+				return a;
+			}
+		}
+		property Vector^ AimPosition
+		{
+			Vector^ get()
+			{
+				float *x, *y, *z;
+				api->GetPlayerAimPosition(this->ID, x, y, z);
+				Vector^ aimp = gcnew Vector(*x, *y, *z);
+				return aimp;
+			}
+		}
+		property bool OnFire
+		{
+			bool get()
+			{
+				return api->IsPlayerOnFire(this->ID);
+			}
+		}
+		property bool Crouching
+		{
+			bool get()
+			{
+				return api->IsPlayerCrouching(this->ID);
+			}
+		}
+		property int Action
+		{
+			int get()
+			{
+				return api->GetPlayerAction(this->ID);
+			}
+		}
+		/*What is this??*/
+		property int GameKeys
+		{
+			int get()
+			{
+				return api->GetPlayerGameKeys(this->ID);
+			}
+		}
+		property CVehicle^ Vehicle
+		{
+			CVehicle^ get()
+			{
+				CVehicle^ result;
+				int identifier = api->GetPlayerVehicleId(this->ID);
+				if (identifier == -1) return nullptr;
+				else
+				{
+					result = gcnew CVehicle(identifier);
+					return result;
+				}
+			}
+			void set(CVehicle^ v)
+			{
+				api->PutPlayerInVehicle(this->ID, v->ID, 0, true, true);
+			}
+		}
+		property int VehicleStatus
+		{
+			int get()
+			{
+				if (this->Vehicle == nullptr) return -1;
+				else return (int)api->GetPlayerInVehicleStatus(this->ID);
+			}
+		}
+		property int Weapon
+		{
+			int get()
+			{
+				return api->GetPlayerWeapon(this->ID);
+			}
+			void set(int w)
+			{
+				api->SetPlayerWeapon(this->ID, w, 1);
+			}
+		}
+		property int Ammo
+		{
+			int get()
+			{
+				return api->GetPlayerWeaponAmmo(this->ID);
+			}
+		}
+		property int WeaponSlot
+		{
+			int get()
+			{
+				return api->GetPlayerWeaponSlot(this->ID);
+			}
+			void set(int slot)
+			{
+				api->SetPlayerWeaponSlot(this->ID, slot);
+			}
+		}
+		void GiveWeapon(int weapon, int ammo);
+		void RemoveWeapon(int weapon);
+		void Disarm();
+		
+		void SetCameraPosition(Vector^ pos, Vector^ look_at);
+		void RestoreCamera();
+		property bool IsCameraLocked
+		{
+			bool get()
+			{
+				return api->IsCameraLocked(this->ID);
+			}
+		}
+
+		void PlayAnim(int anim_group, int anim_id);
+		property bool StandingOnVehicle
+		{
+			bool get()
+			{
+				return api->GetPlayerStandingOnVehicle(this->ID);
+			}
+		}
+		property bool StandingOnObject
+		{
+			bool get()
+			{
+				return api->GetPlayerStandingOnObject(this->ID);
+			}
+		}
+		property bool AFK
+		{
+			bool get()
+			{
+				return api->IsPlayerAway(this->ID);
+			}
+		}
+		property CPlayer^ SpectateTarget
+		{
+			CPlayer ^ get()
+			{
+				int id = api->GetPlayerSpectateTarget(this->ID);
+				if (id >= 0)
+				{
+					CPlayer^ ret = gcnew CPlayer(id);
+					if (ret->Connected == true)
+					{
+						return ret;
+					}
+				}
+				return nullptr;
+			}
+			void set(CPlayer^ plr)
+			{
+				if (plr->Connected == false)
+				{
+					plr = nullptr;
+					api->SetPlayerSpectateTarget(this->ID, this->ID);
+					return;
+				}
+				api->SetPlayerSpectateTarget(this->ID, plr->ID);
+			}
+		}
+		void Redirect(String^ IP, int port, String^ Password);
+
 		operator bool();
 		operator int();
 	};
