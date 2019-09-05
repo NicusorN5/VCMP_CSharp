@@ -121,6 +121,14 @@ void VCMPCSharpPlugin::CPlayer::Redirect(String ^ IP, int port, String ^ Passwor
 	delete name;
 }
 
+void VCMPCSharpPlugin::CPlayer::PlaySound(int soundid)
+{
+	if (this->Connected)
+	{
+		api->PlaySound(this->World, soundid, this->Position->x, this->Position->y, this->Position->z);
+	}
+}
+
 VCMPCSharpPlugin::CPlayer::operator bool()
 {
 	return api->IsPlayerConnected(this->ID);

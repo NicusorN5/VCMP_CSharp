@@ -96,6 +96,7 @@ bool VCMPCSharpPlugin::ScriptCompiler::CompileAll()
 }
 char* CLIStringToCharA(String ^ str)
 {
+	if (String::IsNullOrEmpty(str) == true) return nullptr;
 	char *result = new char[str->Length + 1];
 	int i = 0;
 	for (; i < str->Length; i++)
@@ -108,6 +109,7 @@ char* CLIStringToCharA(String ^ str)
 
 String ^ CharATOCLIString(char * str)
 {
+	if (str == nullptr) return nullptr;
 	String^ result = "";
 	for (int i = 0; str[i] != '\0'; i++)
 	{

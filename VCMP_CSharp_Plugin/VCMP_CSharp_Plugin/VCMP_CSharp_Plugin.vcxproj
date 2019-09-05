@@ -194,11 +194,14 @@
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CVehicle.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Server.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="VCMP.h" />
     <ClInclude Include="VCMP_CSharp_Plugin.h" />
     <ClInclude Include="VCMP_Events.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="WastedSettings.h" />
+    <ClInclude Include="WorldBounds.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -210,6 +213,7 @@
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CVehicle.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Server.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Server Debug|Win32'">Create</PrecompiledHeader>
@@ -220,6 +224,8 @@
     </ClCompile>
     <ClCompile Include="VCMP_CSharp_Plugin.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="WastedSettings.cpp" />
+    <ClCompile Include="WorldBounds.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

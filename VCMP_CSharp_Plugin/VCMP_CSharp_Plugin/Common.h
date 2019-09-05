@@ -9,6 +9,11 @@
 #define DLL_EXPORT
 #endif
 
+
+//The line below might fuck up the entire compilation and etc... Macros suck.
+#undef PlaySound 
+
+
 constexpr int null = 0;
 
 extern PluginFuncs *api;

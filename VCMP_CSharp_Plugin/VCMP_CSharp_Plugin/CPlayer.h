@@ -612,6 +612,7 @@ namespace VCMPCSharpPlugin
 			}
 		}
 		void Redirect(String^ IP, int port, String^ Password);
+		void PlaySound(int soundid);
 
 		operator bool();
 		operator int();
