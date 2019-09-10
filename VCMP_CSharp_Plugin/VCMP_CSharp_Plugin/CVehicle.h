@@ -1,7 +1,5 @@
-#pragma once
 #include "VCMP.h"
 #include "Common.h"
-#include "CPlayer.h"
 
 namespace VCMPCSharpPlugin
 {
@@ -18,6 +16,5 @@ namespace VCMPCSharpPlugin
 				return api->CheckEntityExists(vcmpEntityPool::vcmpEntityPoolVehicle, this->ID);
 			}
 		}
-		//CPlayer ^GetPlayerFromSlot();
 	};
 }

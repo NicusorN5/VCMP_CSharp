@@ -317,7 +317,7 @@ namespace VCMPCSharpPlugin
 		{
 			WorldBounds^ get()
 			{
-				float *a, *b, *c, *d;
+				float *a=nullptr, *b=nullptr, *c=nullptr, *d=nullptr;
 				api->GetWorldBounds(a, b, c, d);
 				return gcnew WorldBounds(*a, *b, *c, *d);
 			}
@@ -330,8 +330,8 @@ namespace VCMPCSharpPlugin
 		{
 			WastedSettings^ get()
 			{
-				uint32_t *a, *b, *e, *f, *col;
-				float *c, *d;
+				uint32_t *a=nullptr, *b=nullptr, *e=nullptr, *f=nullptr, *col=nullptr;
+				float *c=nullptr, *d=nullptr;
 				api->GetWastedSettings(a, b, c, d, col, e, f);
 				return gcnew WastedSettings(*a, *b, *c, *d, Color::FromUInt(*col), *e, *f);
 			}

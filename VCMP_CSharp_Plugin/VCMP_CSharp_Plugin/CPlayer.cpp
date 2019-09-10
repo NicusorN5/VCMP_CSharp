@@ -8,7 +8,7 @@ VCMPCSharpPlugin::CPlayer::CPlayer()
 
 VCMPCSharpPlugin::CPlayer::CPlayer(int ID)
 {
-	
+	ID_Copy = ID;
 }
 
 void VCMPCSharpPlugin::CPlayer::Kick()
@@ -23,13 +23,14 @@ void VCMPCSharpPlugin::CPlayer::Ban()
 
 VCMPCSharpPlugin::CPlayer^ VCMPCSharpPlugin::CPlayer::FindPlayer(int ID)
 {
-	for (int i = 0; i < api->GetMaxPlayers(); i++)
+	for (uint32_t i = 0; i < api->GetMaxPlayers(); i++)
 	{
 		if (api->IsPlayerConnected(i) == 1)
 		{
 			if (ID == i) return %CPlayer(i);
 		}
 	}
+	return nullptr;
 }
 
 VCMPCSharpPlugin::CPlayer^ VCMPCSharpPlugin::CPlayer::FindPlayer(String ^ Name)

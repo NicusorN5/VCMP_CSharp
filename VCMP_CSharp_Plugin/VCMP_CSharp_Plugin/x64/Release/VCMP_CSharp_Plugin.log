@@ -1,6 +1,12 @@
 ﻿  CPlayer.cpp
-c:\users\athanatos\documents\github\vcmp_csharp\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.cpp(21): warning C4018: '<': signed/unsigned mismatch
-c:\users\athanatos\documents\github\vcmp_csharp\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.h(28): warning C4717: 'VCMPCSharpPlugin::CPlayer::ID::get': recursive on all control paths, function will cause runtime stack overflow
-c:\users\athanatos\documents\github\vcmp_csharp\vcmp_csharp_plugin\vcmp_csharp_plugin\cplayer.cpp(28): warning C4715: 'VCMPCSharpPlugin::CPlayer::FindPlayer': not all control paths return a value
+  CVehicle.cpp
+  Server.cpp
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Server.cpp(29,47): warning C4244:  'argument': conversion from 'float' to 'int16_t', possible loss of data
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Server.cpp(29,39): warning C4244:  'argument': conversion from 'float' to 'int16_t', possible loss of data
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Server.cpp(29,31): warning C4244:  'argument': conversion from 'float' to 'int16_t', possible loss of data
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Server.cpp(34,47): warning C4244:  'argument': conversion from 'float' to 'int16_t', possible loss of data
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Server.cpp(34,39): warning C4244:  'argument': conversion from 'float' to 'int16_t', possible loss of data
+  Generating Code...
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Server.cpp(34,31): warning C4244:  'argument': conversion from 'float' to 'int16_t', possible loss of data
      Creating library C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.lib and object C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.exp
   VCMP_CSharp_Plugin.vcxproj -> C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.dll

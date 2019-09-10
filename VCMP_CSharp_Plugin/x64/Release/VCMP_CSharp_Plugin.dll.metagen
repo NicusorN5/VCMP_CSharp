@@ -22,7 +22,7 @@ Class VCMPCSharpPlugin.Color: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     Byte Blue : Public
   Methods:
     ToUint(): PrivateScope, Public, HideBySig
-    FromUInt(UInt32): PrivateScope, Public, HideBySig
+    FromUInt(UInt32): PrivateScope, Public, Static, HideBySig
 Class VCMPCSharpPlugin.CPickup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class VCMPCSharpPlugin.ScriptCompiler: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -35,9 +35,63 @@ Class VCMPCSharpPlugin.ScriptCompiler: AutoLayout, AnsiClass, Class, Public, Bef
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
     CompileAll(): PrivateScope, Public, HideBySig
+Class VCMPCSharpPlugin.Vector: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Single, Single, Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Single x : Public
+    Single y : Public
+    Single z : Public
+  Methods:
+    op_AdditionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_SubtractionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_DivisionAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
+    op_DivisionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_MultiplicationAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
+    op_MultiplicationAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+Class VCMPCSharpPlugin.CVehicle: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 ID : Public
+  Properties:
+    Boolean Valid 'get ' : 
+  Methods:
+    get_Valid(): PrivateScope, Public, HideBySig, SpecialName
 Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:
+    VCMPCSharpPlugin.CPlayer SpectateTarget 'get set' : 
+    Boolean AFK 'get ' : 
+    Boolean StandingOnObject 'get ' : 
+    Boolean StandingOnVehicle 'get ' : 
+    Boolean IsCameraLocked 'get ' : 
+    Int32 WeaponSlot 'get set' : 
+    Int32 Ammo 'get ' : 
+    Int32 Weapon 'get set' : 
+    Int32 VehicleStatus 'get ' : 
+    VCMPCSharpPlugin.CVehicle Vehicle 'get set' : 
+    Int32 GameKeys 'get ' : 
+    Int32 Action 'get ' : 
+    Boolean Crouching 'get ' : 
+    Boolean OnFire 'get ' : 
+    VCMPCSharpPlugin.Vector AimPosition 'get ' : 
+    VCMPCSharpPlugin.Vector AimDirection 'get ' : 
+    Byte Alpha 'get ' : 
+    Single Angle 'get set' : 
+    VCMPCSharpPlugin.Vector Speed 'get set' : 
+    VCMPCSharpPlugin.Vector Position 'get set' : 
+    Int32 Immunity 'get set' : 
+    Single Armour 'get set' : 
+    Single Health 'get set' : 
+    Double FPS 'get ' : 
+    Int32 Ping 'get ' : 
+    Byte WantedLevel 'get set' : 
+    Int32 Score 'get set' : 
+    Int32 Money 'get set' : 
+    Boolean Typing 'get ' : 
+    Boolean Spawned 'get ' : 
+    VCMPCSharpPlugin.Color Colour 'get set' : 
     Int32 Skin 'get set' : 
     Int32 Team 'get set' : 
     Int32 Class 'get ' : 
@@ -53,22 +107,46 @@ Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     Boolean GreenScanlines 'get set' : 
     Boolean WhiteScanlines 'get set' : 
     Boolean CanDriveBy 'get set' : 
-    Boolean Fronzen 'get set' : 
-    Int32 State 'get ' : 
+    Boolean Frozen 'get set' : 
+    VCMPCSharpPlugin.PlayerState State 'get ' : 
     Int32 UniqueID 'get ' : 
-    Boolean Connected 'get ' : 
+    Boolean Connected 'get set' : 
     System.String UID2 'get ' : 
     System.String UID 'get ' : 
     System.String IP 'get ' : 
     Boolean Admin 'get set' : 
-    Int32 Action 'get ' : 
-    Int32 ID   'get ' : 
+    Int32 ID   'get set' : 
     System.String Name 'get set' : 
   Methods:
+    get_Action(): PrivateScope, Public, HideBySig, SpecialName
+    get_GameKeys(): PrivateScope, Public, HideBySig, SpecialName
+    get_Vehicle(): PrivateScope, Public, HideBySig, SpecialName
+    set_Vehicle(CVehicle): PrivateScope, Public, HideBySig, SpecialName
+    get_VehicleStatus(): PrivateScope, Public, HideBySig, SpecialName
+    get_Weapon(): PrivateScope, Public, HideBySig, SpecialName
+    set_Weapon(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Ammo(): PrivateScope, Public, HideBySig, SpecialName
+    get_WeaponSlot(): PrivateScope, Public, HideBySig, SpecialName
+    set_WeaponSlot(Int32): PrivateScope, Public, HideBySig, SpecialName
+    GiveWeapon(Int32, Int32): PrivateScope, Public, HideBySig
+    RemoveWeapon(Int32): PrivateScope, Public, HideBySig
+    Disarm(): PrivateScope, Public, HideBySig
+    SetCameraPosition(Vector, Vector): PrivateScope, Public, HideBySig
+    RestoreCamera(): PrivateScope, Public, HideBySig
+    get_IsCameraLocked(): PrivateScope, Public, HideBySig, SpecialName
+    PlayAnim(Int32, Int32): PrivateScope, Public, HideBySig
+    get_StandingOnVehicle(): PrivateScope, Public, HideBySig, SpecialName
+    get_StandingOnObject(): PrivateScope, Public, HideBySig, SpecialName
+    get_AFK(): PrivateScope, Public, HideBySig, SpecialName
+    get_SpectateTarget(): PrivateScope, Public, HideBySig, SpecialName
+    set_SpectateTarget(CPlayer): PrivateScope, Public, HideBySig, SpecialName
+    Redirect(String, Int32, String): PrivateScope, Public, HideBySig
+    PlaySound(Int32): PrivateScope, Public, HideBySig
+    op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
+    op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
     set_Name(String): PrivateScope, Public, HideBySig, SpecialName
     get_Name(): PrivateScope, Public, HideBySig, SpecialName
     get_ID(): PrivateScope, Public, HideBySig, SpecialName
-    get_Action(): PrivateScope, Public, HideBySig, SpecialName
     get_Admin(): PrivateScope, Public, HideBySig, SpecialName
     set_Admin(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
     get_IP(): PrivateScope, Public, HideBySig, SpecialName
@@ -82,8 +160,8 @@ Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     PlayerStreamedToPlayer(CPlayer): PrivateScope, Public, HideBySig
     get_UniqueID(): PrivateScope, Public, HideBySig, SpecialName
     get_State(): PrivateScope, Public, HideBySig, SpecialName
-    get_Fronzen(): PrivateScope, Public, HideBySig, SpecialName
-    set_Fronzen(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    get_Frozen(): PrivateScope, Public, HideBySig, SpecialName
+    set_Frozen(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
     get_CanDriveBy(): PrivateScope, Public, HideBySig, SpecialName
     set_CanDriveBy(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
     get_WhiteScanlines(): PrivateScope, Public, HideBySig, SpecialName
@@ -113,8 +191,40 @@ Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     set_Team(Int32): PrivateScope, Public, HideBySig, SpecialName
     get_Skin(): PrivateScope, Public, HideBySig, SpecialName
     set_Skin(Int32): PrivateScope, Public, HideBySig, SpecialName
-    op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
-    op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
+    get_Colour(): PrivateScope, Public, HideBySig, SpecialName
+    set_Colour(Color): PrivateScope, Public, HideBySig, SpecialName
+    get_Spawned(): PrivateScope, Public, HideBySig, SpecialName
+    ForceSpawn(): PrivateScope, Public, HideBySig
+    ForceSelect(): PrivateScope, Public, HideBySig
+    get_Typing(): PrivateScope, Public, HideBySig, SpecialName
+    get_Money(): PrivateScope, Public, HideBySig, SpecialName
+    set_Money(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Score(): PrivateScope, Public, HideBySig, SpecialName
+    set_Score(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_WantedLevel(): PrivateScope, Public, HideBySig, SpecialName
+    set_WantedLevel(Byte): PrivateScope, Public, HideBySig, SpecialName
+    get_Ping(): PrivateScope, Public, HideBySig, SpecialName
+    get_FPS(): PrivateScope, Public, HideBySig, SpecialName
+    get_Health(): PrivateScope, Public, HideBySig, SpecialName
+    set_Health(Single): PrivateScope, Public, HideBySig, SpecialName
+    get_Armour(): PrivateScope, Public, HideBySig, SpecialName
+    set_Armour(Single): PrivateScope, Public, HideBySig, SpecialName
+    get_Immunity(): PrivateScope, Public, HideBySig, SpecialName
+    set_Immunity(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Position(): PrivateScope, Public, HideBySig, SpecialName
+    set_Position(Vector): PrivateScope, Public, HideBySig, SpecialName
+    get_Speed(): PrivateScope, Public, HideBySig, SpecialName
+    set_Speed(Vector): PrivateScope, Public, HideBySig, SpecialName
+    AddSpeed(Vector): PrivateScope, Public, HideBySig
+    get_Angle(): PrivateScope, Public, HideBySig, SpecialName
+    set_Angle(Single): PrivateScope, Public, HideBySig, SpecialName
+    Teleport(Vector, Single): PrivateScope, Public, HideBySig
+    SetTransparency(Byte, Int32): PrivateScope, Public, HideBySig
+    get_Alpha(): PrivateScope, Public, HideBySig, SpecialName
+    get_AimDirection(): PrivateScope, Public, HideBySig, SpecialName
+    get_AimPosition(): PrivateScope, Public, HideBySig, SpecialName
+    get_OnFire(): PrivateScope, Public, HideBySig, SpecialName
+    get_Crouching(): PrivateScope, Public, HideBySig, SpecialName
 Struct VCMPCSharpPlugin.PlayerState: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum
   Fields:
@@ -128,19 +238,3 @@ Struct VCMPCSharpPlugin.PlayerState: AutoLayout, AnsiClass, Class, Public, Seale
     VCMPCSharpPlugin.PlayerState EnterPassenger = 6 : Public, Static, Literal, HasDefault
     VCMPCSharpPlugin.PlayerState Exit = 7 : Public, Static, Literal, HasDefault
     VCMPCSharpPlugin.PlayerState Unspawned = 8 : Public, Static, Literal, HasDefault
-Class VCMPCSharpPlugin.CVehicle: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-Class VCMPCSharpPlugin.Vector: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(Single, Single, Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Fields:
-    Single x : Public
-    Single y : Public
-    Single z : Public
-  Methods:
-    op_AdditionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
-    op_SubtractionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
-    op_DivisionAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
-    op_DivisionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
-    op_MultiplicationAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
-    op_MultiplicationAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName

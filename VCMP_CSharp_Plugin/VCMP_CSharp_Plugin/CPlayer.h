@@ -8,8 +8,21 @@
 using namespace System;
 namespace VCMPCSharpPlugin
 {
+	public enum class PlayerState : int
+	{
+		None = 0,
+		Normal = 1,
+		Aim = 2,
+		Driver = 3,
+		Passenger = 4,
+		EnterDriver = 5,
+		EnterPassenger = 6,
+		Exit = 7,
+		Unspawned = 8,
+	};
 	public ref class CPlayer
 	{
+		int ID_Copy;
 		CPlayer();
 	public:
 		CPlayer(int ID);
@@ -29,13 +42,15 @@ namespace VCMPCSharpPlugin
 			}
 		}
 		property int ID {
-			int get()
+			int get() 
 			{
-				return this->ID;
+				return ID_Copy;
 			}
+
 			private: void set(int v)
 			{
 				this->Connected = api->IsPlayerConnected(v);
+				if (this->Connected) ID_Copy = v;
 			}
 		}
 		property bool Admin 
@@ -102,24 +117,15 @@ namespace VCMPCSharpPlugin
 				return api->GetPlayerKey(this->ID);
 			}
 		}
-		/* We're using int this time, since I get errors I cant fix reeeee
+		/* We're using int this time, since I get errors I cant fix reeeee */
 		property PlayerState State
 		{
 			PlayerState get()
 			{
-				PlayerState r = (PlayerState)api->GetPlayerState(this->ID);
-				return r;
+				return (PlayerState)api->GetPlayerState(this->ID);
 			}
 		}
-		*/
-		property int State
-		{
-			int get()
-			{
-				return api->GetPlayerState(this->ID);
-			}
-		}
-		property bool Fronzen
+		property bool Frozen
 		{
 			bool get()
 			{
@@ -363,24 +369,24 @@ namespace VCMPCSharpPlugin
 				return api->GetPlayerFPS(this->ID);
 			}
 		}
-		property uint8_t Health
+		property float Health
 		{
-			uint8_t get()
+			float get()
 			{
 				return api->GetPlayerHealth(this->ID);
 			}
-			void set(uint8_t h)
+			void set(float h)
 			{
 				api->SetPlayerHealth(this->ID, h);
 			}
 		}
-		property uint8_t Armour
+		property float Armour
 		{
-			uint8_t get()
+			float get()
 			{
 				return api->GetPlayerArmour(this->ID);
 			}
-			void set(uint8_t a)
+			void set(float a)
 			{
 				api->SetPlayerArmour(this->ID, a);
 			}
@@ -400,7 +406,7 @@ namespace VCMPCSharpPlugin
 		{
 			Vector^ get()
 			{
-				float *x, *y, *z;
+				float *x=nullptr, *y=nullptr, *z= nullptr;
 				api->GetPlayerPosition(this->ID, x, y, z);
 				Vector^ v = gcnew Vector(*x, *y,*z);
 				return v;
@@ -414,7 +420,7 @@ namespace VCMPCSharpPlugin
 		{
 			Vector^ get()
 			{
-				float *x, *y, *z;
+				float *x=nullptr, *y=nullptr, *z=nullptr;
 				api->GetPlayerSpeed(this->ID, x, y, z);
 				Vector^ v = gcnew Vector(*x, *y, *z); //I dont think we need to delete this because we use C# garbage collector.
 				return v;
@@ -449,7 +455,7 @@ namespace VCMPCSharpPlugin
 		{
 			Vector^ get()
 			{
-				float *x, *y, *z;
+				float *x= nullptr, *y=nullptr, *z=nullptr;
 				api->GetPlayerAimDirection(this->ID, x, y, z);
 				Vector^ a = gcnew Vector(*x, *y, *z);
 				return a;
@@ -459,7 +465,7 @@ namespace VCMPCSharpPlugin
 		{
 			Vector^ get()
 			{
-				float *x, *y, *z;
+				float *x= nullptr, *y= nullptr, *z=nullptr;
 				api->GetPlayerAimPosition(this->ID, x, y, z);
 				Vector^ aimp = gcnew Vector(*x, *y, *z);
 				return aimp;
@@ -494,18 +500,17 @@ namespace VCMPCSharpPlugin
 				return api->GetPlayerGameKeys(this->ID);
 			}
 		}
-		property CVehicle^ Vehicle
+		property CVehicle ^Vehicle
 		{
 			CVehicle^ get()
 			{
-				CVehicle^ result;
+				CVehicle^ result = nullptr;
 				int identifier = api->GetPlayerVehicleId(this->ID);
-				if (identifier == -1) return nullptr;
-				else
+				if (identifier != -1)
 				{
 					result = gcnew CVehicle(identifier);
-					return result;
 				}
+				return result;
 			}
 			void set(CVehicle^ v)
 			{
@@ -617,16 +622,4 @@ namespace VCMPCSharpPlugin
 		operator bool();
 		operator int();
 	};
-	public enum class PlayerState : int
-	{
-		None = 0,
-		Normal = 1,
-		Aim = 2,
-		Driver = 3,
-		Passenger = 4,
-		EnterDriver = 5,
-		EnterPassenger = 6,
-		Exit = 7,
-		Unspawned = 8,
-	} ;
 }
