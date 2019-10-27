@@ -8,11 +8,9 @@ using namespace System;
 
 namespace VCMPCSharpPlugin
 {
-	public delegate void OnServerInitialise();
+	public delegate bool OnServerInitialise();
 	public delegate void OnServerShutdown();
 	public delegate void OnServerFrame(float elapsedTime);
-
-	//uint8_t (*OnPluginCommand(uint32_t commandIdentifier, String ^message);
 
 	public delegate int OnIncomingConnection(String^ playerName, int nameBufferSize, String^ userPassword, String^ ipAddress);
 	public delegate void OnClientScriptData(CPlayer ^player, array<Byte^> ^data);

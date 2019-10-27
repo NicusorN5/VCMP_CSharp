@@ -21,7 +21,7 @@ extern "C" DLL_EXPORT unsigned int VcmpPluginInit(PluginFuncs* pluginFuncs, Plug
 	pluginInfo->apiMinorVersion = PLUGIN_API_MINOR;
 	strcpy_s(pluginInfo->name, PluginName);
 	PrintModuleColor();
-	printf(" Loaded C# plugin by Athanatos [This is only a experimental build.] \r\n");
+	printf(" Loading C# plugin by Athanatos [This is only a experimental build.] \r\n");
 	ScriptCompiler ^compiler = gcnew ScriptCompiler();
 	if (compiler->HasScripts == false) return 0;
 	return 1;

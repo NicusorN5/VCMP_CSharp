@@ -3,7 +3,7 @@
 #include "VCMP_CSharp_Plugin.h"
 #include "Color.h"
 #include "Vector.h"
-#include "CVehicle.h"
+
 //Before you compiain, i know this class is supposed to be filled with null-checks of the player instance. Ok bye.
 using namespace System;
 namespace VCMPCSharpPlugin
@@ -117,7 +117,6 @@ namespace VCMPCSharpPlugin
 				return api->GetPlayerKey(this->ID);
 			}
 		}
-		/* We're using int this time, since I get errors I cant fix reeeee */
 		property PlayerState State
 		{
 			PlayerState get()
@@ -500,29 +499,15 @@ namespace VCMPCSharpPlugin
 				return api->GetPlayerGameKeys(this->ID);
 			}
 		}
-		property CVehicle ^Vehicle
-		{
-			CVehicle^ get()
-			{
-				CVehicle^ result = nullptr;
-				int identifier = api->GetPlayerVehicleId(this->ID);
-				if (identifier != -1)
-				{
-					result = gcnew CVehicle(identifier);
-				}
-				return result;
-			}
-			void set(CVehicle^ v)
-			{
-				api->PutPlayerInVehicle(this->ID, v->ID, 0, true, true);
-			}
-		}
-		property int VehicleStatus
+		property int Vehicle
 		{
 			int get()
 			{
-				if (this->Vehicle == nullptr) return -1;
-				else return (int)api->GetPlayerInVehicleStatus(this->ID);
+				return api->GetPlayerVehicleId(this->ID);
+			}
+			void set(int v)
+			{
+				api->PutPlayerInVehicle(this->ID, v, 0, 1, 1);
 			}
 		}
 		property int Weapon
