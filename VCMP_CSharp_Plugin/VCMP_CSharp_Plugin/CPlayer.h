@@ -30,15 +30,19 @@ namespace VCMPCSharpPlugin
 		{
 			void set(String^ value) 
 			{
-				api->SetPlayerName(this->ID, CLIStringToCharA(value));
+				if(this->Connected) api->SetPlayerName(this->ID, CLIStringToCharA(value));
 			}
 			String^ get()
 			{
-				char *N = new char[25];
-				api->GetPlayerName(this->ID, N, 25);
-				String^ r = CharATOCLIString(N);
-				delete N;
-				return r;
+				if (this->Connected)
+				{
+					char* N = new char[25];
+					api->GetPlayerName(this->ID, N, 25);
+					String^ r = CharATOCLIString(N);
+					delete N;
+					return r;
+				}
+				else return String::Empty;
 			}
 		}
 		property int ID {
@@ -57,44 +61,57 @@ namespace VCMPCSharpPlugin
 		{
 			bool get() 
 			{
-				return api->IsPlayerAdmin(this->ID); 
+				if (this->Connected) return api->IsPlayerAdmin(this->ID);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerAdmin(this->ID, value);
+				if(this->Connected) api->SetPlayerAdmin(this->ID, value);
 			}
 		}
 		property String^ IP
 		{
 			String^ get()
 			{
-				char * IP = new char[20];
-				api->GetPlayerIP(this->ID, IP, 20);
-				String^ r = CharATOCLIString(IP);
-				delete IP;
-				return r;
+				if (this->Connected)
+				{
+					char* IP = new char[20];
+					api->GetPlayerIP(this->ID, IP, 20);
+					String^ r = CharATOCLIString(IP);
+					delete IP;
+					return r;
+				}
+				else return "0.0.0.0";
 			}
 		}
 		property String^ UID
 		{
 			String^ get()
 			{
-				char * UID = new char[50];
-				api->GetPlayerUID(this->ID, UID, 50);
-				String^ result = CharATOCLIString(UID);
-				delete UID;
-				return result;
+				if (this->Connected)
+				{
+					char* UID = new char[50];
+					api->GetPlayerUID(this->ID, UID, 50);
+					String^ result = CharATOCLIString(UID);
+					delete UID;
+					return result;
+				}
+				else return String::Empty;
 			}
 		}
 		property String^ UID2
 		{
 			String^ get()
 			{
-				char * UID2 = new char[50];
-				api->GetPlayerUID2(this->ID, UID2, 50);
-				String^ r = CharATOCLIString(UID2);
-				delete UID2;
-				return r;
+				if (this->Connected)
+				{
+					char* UID2 = new char[50];
+					api->GetPlayerUID2(this->ID, UID2, 50);
+					String^ r = CharATOCLIString(UID2);
+					delete UID2;
+					return r;
+				}
+				else return String::Empty;
 			}
 		}
 		void Kick();
@@ -107,160 +124,175 @@ namespace VCMPCSharpPlugin
 			{
 				return api->IsPlayerConnected(this->ID);
 			}
-		private: void set(bool value) {}
+			private: void set(bool value) {}
 		}
 		bool PlayerStreamedToPlayer(CPlayer^ p);
 		property int UniqueID
 		{
 			int get()
 			{
-				return api->GetPlayerKey(this->ID);
+				if (this->Connected) return api->GetPlayerKey(this->ID);
+				else return 0;
 			}
 		}
 		property PlayerState State
 		{
 			PlayerState get()
 			{
-				return (PlayerState)api->GetPlayerState(this->ID);
+				if(this->Connected) return (PlayerState)api->GetPlayerState(this->ID);
+				else return PlayerState::Unspawned;
 			}
 		}
 		property bool Frozen
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionControllable);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionControllable);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionControllable, value);
+				if(this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionControllable, value);
 			}
 		}
 		property bool CanDriveBy
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDriveBy);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDriveBy);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDriveBy, value);
+				if (this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDriveBy, value);
 			}
 		}
 		property bool WhiteScanlines
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWhiteScanlines);
+				if(this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWhiteScanlines);
+				return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWhiteScanlines, value);
+				if(this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWhiteScanlines, value);
 			}
 		}
 		property bool GreenScanlines
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionGreenScanlines);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionGreenScanlines);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionGreenScanlines, value);
+				if(this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionGreenScanlines, value);
 			}
 		}
 		property bool Widescreen
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWidescreen);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWidescreen);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWidescreen, value);
+				if (this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionWidescreen, value);
 			}
 		}
 		property bool MarkersShown
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionShowMarkers);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionShowMarkers);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionShowMarkers, value);
+				if(this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionShowMarkers, value);
 			}
 		}
 		property bool CanAttack
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionCanAttack);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionCanAttack);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionCanAttack, value);
+				if(this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionCanAttack, value);
 			}
 		}
 		property bool HasMarker
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionHasMarker);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionHasMarker);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionHasMarker, value);
+				if (this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionHasMarker, value);
 			}
 		}
 		property bool ChatTags
 		{
 			bool get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionChatTagsEnabled);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionChatTagsEnabled);
+				else return false;
 			}
 			void set(bool value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionChatTagsEnabled, value);
+				if(this->Connected)api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionChatTagsEnabled, value);
 			}
 		}
 		property uint8_t DrunkLevel
 		{
 			uint8_t get()
 			{
-				return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDrunkEffects);
+				if (this->Connected) return api->GetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDrunkEffects);
+				else return 0;
 			}
 			void set(uint8_t value)
 			{
-				api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDrunkEffects, value);
+				if(this->Connected) api->SetPlayerOption(this->ID, vcmpPlayerOption::vcmpPlayerOptionDrunkEffects, value);
 			}
 		}
 		property int World
 		{
 			int get()
 			{
-				return api->GetPlayerWorld(this->ID);
+				if (this->Connected) return api->GetPlayerWorld(this->ID);
+				else return 0;
 			}
 			void set(int v)
 			{
-				api->SetPlayerWorld(this->ID, v);
+				if(this->Connected) api->SetPlayerWorld(this->ID, v);
 			}
 		}
 		property int SecondaryWorld
 		{
 			int get()
 			{
-				return api->GetPlayerSecondaryWorld(this->ID);
+				if (this->Connected) return api->GetPlayerSecondaryWorld(this->ID);
+				else return 0;
 			}
 			void set(int value)
 			{
-				api->SetPlayerSecondaryWorld(this->ID, value);
+				if(this->Connected) api->SetPlayerSecondaryWorld(this->ID, value);
 			}
 		}
 		property int UniqueWorld
 		{
 			int get()
 			{
-				return api->GetPlayerUniqueWorld(this->ID);
+				if (this->Connected) return api->GetPlayerUniqueWorld(this->ID);
+				else return 0;
 			}
 		}
 		bool WorldCompatible(int world);
@@ -268,29 +300,32 @@ namespace VCMPCSharpPlugin
 		{
 			int get()
 			{
-				return api->GetPlayerClass(this->ID);
+				if (this->Connected) return api->GetPlayerClass(this->ID);
+				else return 0;
 			}
 		}
 		property int Team
 		{
 			int get()
 			{
-				return api->GetPlayerTeam(this->ID);
+				if (this->Connected) return api->GetPlayerTeam(this->ID);
+				else return 0;
 			}
 			void set(int value)
 			{
-				api->SetPlayerTeam(this->ID, value);
+				if(this->Connected) api->SetPlayerTeam(this->ID, value);
 			}
 		}
 		property int Skin
 		{
 			int get()
 			{
-				return api->GetPlayerSkin(this->ID);
+				if (this->Connected) return api->GetPlayerSkin(this->ID);
+				else return 0;
 			}
 			void set(int v)
 			{
-				api->SetPlayerSkin(this->ID, v);
+				if(this->Connected) api->SetPlayerSkin(this->ID, v);
 			}
 
 		}
@@ -298,18 +333,20 @@ namespace VCMPCSharpPlugin
 		{
 			Color^ get()
 			{
-				return Color::FromUInt(api->GetPlayerColour(this->ID));
+				if (this->Connected) return Color::FromUInt(api->GetPlayerColour(this->ID));
+				else return gcnew Color(0, 0, 0);
 			}
 			void set(Color^ color)
 			{
-				api->SetPlayerColour(this->ID, color->ToUint());
+				if(this->Connected) api->SetPlayerColour(this->ID, color->ToUint());
 			}
 		}
 		property bool Spawned
 		{
 			bool get()
 			{
-				return api->IsPlayerSpawned(this->ID);
+				if (this->Connected) return api->IsPlayerSpawned(this->ID);
+				else return false;
 			}
 		}
 		void ForceSpawn();
@@ -318,115 +355,132 @@ namespace VCMPCSharpPlugin
 		{
 			bool get()
 			{
-				return api->IsPlayerTyping(this->ID);
+				if (this->Connected) return api->IsPlayerTyping(this->ID);
+				else return false;
 			}
 		}
 		property int Money
 		{
 			int get()
 			{
-				return api->GetPlayerMoney(this->ID);
+				if (this->Connected) return api->GetPlayerMoney(this->ID);
+				else return 0;
 			}
 			void set(int v)
 			{
-				api->SetPlayerMoney(this->ID, v);
+				if(this->Connected) api->SetPlayerMoney(this->ID, v);
 			}
 		}
 		property int Score
 		{
 			int get()
 			{
-				return api->GetPlayerScore(this->ID);
+				if (this->Connected) return api->GetPlayerScore(this->ID);
+				else return 0;
 			}
 			void set(int newscore)
 			{
-				api->SetPlayerScore(this->ID, newscore);
+				if(this->Connected) api->SetPlayerScore(this->ID, newscore);
 			}
 		}
 		property uint8_t WantedLevel
 		{
 			uint8_t get()
 			{
-				return api->GetPlayerWantedLevel(this->ID);
+				if (this->Connected) return api->GetPlayerWantedLevel(this->ID);
+				else return 0;
 			}
 			void set(uint8_t v)
 			{
-				api->SetPlayerWantedLevel(this->ID, v);
+				if(this->Connected) api->SetPlayerWantedLevel(this->ID, v);
 			}
 		}
 		property int Ping
 		{
 			int get()
 			{
-				return api->GetPlayerPing(this->ID);
+				if (this->Connected) return api->GetPlayerPing(this->ID);
+				else return 0x7fffffff;
 			}
 		}
 		property double FPS
 		{
 			double get()
 			{
-				return api->GetPlayerFPS(this->ID);
+				if (this->Connected) return api->GetPlayerFPS(this->ID);
+				else return 0;
 			}
 		}
 		property float Health
 		{
 			float get()
 			{
-				return api->GetPlayerHealth(this->ID);
+				if (this->Connected) return api->GetPlayerHealth(this->ID);
+				else return 0;
 			}
 			void set(float h)
 			{
-				api->SetPlayerHealth(this->ID, h);
+				if(this->Connected) api->SetPlayerHealth(this->ID, h);
 			}
 		}
 		property float Armour
 		{
 			float get()
 			{
-				return api->GetPlayerArmour(this->ID);
+				if (this->Connected) return api->GetPlayerArmour(this->ID);
+				else return 0;
 			}
 			void set(float a)
 			{
-				api->SetPlayerArmour(this->ID, a);
+				if(this->Connected) api->SetPlayerArmour(this->ID, a);
 			}
 		}
 		property int Immunity
 		{
 			int get()
 			{
-				return api->GetPlayerImmunityFlags(this->ID);
+				if (this->Connected) return api->GetPlayerImmunityFlags(this->ID);
+				else return 0;
 			}
 			void set(int flags)
 			{
-				api->SetPlayerImmunityFlags(this->ID,flags);
+				if(this->Connected) api->SetPlayerImmunityFlags(this->ID,flags);
 			}
 		}
 		property Vector^ Position
 		{
 			Vector^ get()
 			{
-				float *x=nullptr, *y=nullptr, *z= nullptr;
-				api->GetPlayerPosition(this->ID, x, y, z);
-				Vector^ v = gcnew Vector(*x, *y,*z);
-				return v;
+				if (this->Connected)
+				{
+					float* x = nullptr, * y = nullptr, * z = nullptr;
+					api->GetPlayerPosition(this->ID, x, y, z);
+					Vector^ v = gcnew Vector(*x, *y, *z);
+					return v;
+				}
+				else return gcnew Vector(0);
 			}
 			void set(Vector^ pos)
 			{
-				api->SetPlayerPosition(this->ID, pos->x, pos->y, pos->z);
+				if(this->Connected) api->SetPlayerPosition(this->ID, pos->x, pos->y, pos->z);
 			}
 		}
 		property Vector^ Speed
 		{
 			Vector^ get()
 			{
-				float *x=nullptr, *y=nullptr, *z=nullptr;
-				api->GetPlayerSpeed(this->ID, x, y, z);
-				Vector^ v = gcnew Vector(*x, *y, *z); //I dont think we need to delete this because we use C# garbage collector.
-				return v;
+				if (this->Connected)
+				{
+					float* x = nullptr, * y = nullptr, * z = nullptr;
+					api->GetPlayerSpeed(this->ID, x, y, z);
+					Vector^ v = gcnew Vector(*x, *y, *z); //I dont think we need to delete this because we use C# garbage collector.
+					return v;
+				}
+				else return gcnew Vector(0);
 			}
 			void set(Vector^ pos)
 			{
-				api->SetPlayerSpeed(this->ID, pos->x, pos->y, pos->z);
+				if(this->Connected) api->SetPlayerSpeed(this->ID, pos->x, pos->y, pos->z);
 			}
 		}
 		void AddSpeed(Vector ^s);
@@ -434,11 +488,12 @@ namespace VCMPCSharpPlugin
 		{
 			float get()
 			{
-				return api->GetPlayerHeading(this->ID);
+				if (this->Connected) return api->GetPlayerHeading(this->ID);
+				else return 0;
 			}
 			void set(float v)
 			{
-				api->SetPlayerHeading(this->ID, v);
+				if(this->Connected) api->SetPlayerHeading(this->ID, v);
 			}
 		}
 		void Teleport(Vector^ pos, float angle);
@@ -447,48 +502,59 @@ namespace VCMPCSharpPlugin
 		{
 			uint8_t get()
 			{
-				return api->GetPlayerAlpha(this->ID);
+				if(this->Connected) return api->GetPlayerAlpha(this->ID);
 			}
 		}
 		property Vector^ AimDirection
 		{
 			Vector^ get()
 			{
-				float *x= nullptr, *y=nullptr, *z=nullptr;
-				api->GetPlayerAimDirection(this->ID, x, y, z);
-				Vector^ a = gcnew Vector(*x, *y, *z);
-				return a;
+				if (this->Connected)
+				{
+					float* x = nullptr, * y = nullptr, * z = nullptr;
+					api->GetPlayerAimDirection(this->ID, x, y, z);
+					Vector^ a = gcnew Vector(*x, *y, *z);
+					return a;
+				}
+				else return gcnew Vector(0);
 			}
 		}
 		property Vector^ AimPosition
 		{
 			Vector^ get()
 			{
-				float *x= nullptr, *y= nullptr, *z=nullptr;
-				api->GetPlayerAimPosition(this->ID, x, y, z);
-				Vector^ aimp = gcnew Vector(*x, *y, *z);
-				return aimp;
+				if (this->Connected)
+				{
+					float* x = nullptr, * y = nullptr, * z = nullptr;
+					api->GetPlayerAimPosition(this->ID, x, y, z);
+					Vector^ aimp = gcnew Vector(*x, *y, *z);
+					return aimp;
+				}
+				else return gcnew Vector(0);
 			}
 		}
 		property bool OnFire
 		{
 			bool get()
 			{
-				return api->IsPlayerOnFire(this->ID);
+				if (this->Connected) return api->IsPlayerOnFire(this->ID);
+				else return false;
 			}
 		}
 		property bool Crouching
 		{
 			bool get()
 			{
-				return api->IsPlayerCrouching(this->ID);
+				if (this->Connected) return api->IsPlayerCrouching(this->ID);
+				else return false;
 			}
 		}
 		property int Action
 		{
 			int get()
 			{
-				return api->GetPlayerAction(this->ID);
+				if(this->Connected) return api->GetPlayerAction(this->ID);
+				return false;
 			}
 		}
 		/*What is this??*/
@@ -496,47 +562,52 @@ namespace VCMPCSharpPlugin
 		{
 			int get()
 			{
-				return api->GetPlayerGameKeys(this->ID);
+				if (this->Connected) return api->GetPlayerGameKeys(this->ID);
+				else return 0;
 			}
 		}
 		property int Vehicle
 		{
 			int get()
 			{
-				return api->GetPlayerVehicleId(this->ID);
+				if (this->Connected) return api->GetPlayerVehicleId(this->ID);
+				else return 0;
 			}
 			void set(int v)
 			{
-				api->PutPlayerInVehicle(this->ID, v, 0, 1, 1);
+				if(this->Connected)api->PutPlayerInVehicle(this->ID, v, 0, 1, 1);
 			}
 		}
 		property int Weapon
 		{
 			int get()
 			{
-				return api->GetPlayerWeapon(this->ID);
+				if (this->Connected) return api->GetPlayerWeapon(this->ID);
+				else return 0;
 			}
 			void set(int w)
 			{
-				api->SetPlayerWeapon(this->ID, w, 1);
+				if(this->Connected) api->SetPlayerWeapon(this->ID, w, 1);
 			}
 		}
 		property int Ammo
 		{
 			int get()
 			{
-				return api->GetPlayerWeaponAmmo(this->ID);
+				if (this->Connected) return api->GetPlayerWeaponAmmo(this->ID);
+				else return 0;
 			}
 		}
 		property int WeaponSlot
 		{
 			int get()
 			{
-				return api->GetPlayerWeaponSlot(this->ID);
+				if (this->Connected) return api->GetPlayerWeaponSlot(this->ID);
+				else return 0;
 			}
 			void set(int slot)
 			{
-				api->SetPlayerWeaponSlot(this->ID, slot);
+				if(this->Connected) api->SetPlayerWeaponSlot(this->ID, slot);
 			}
 		}
 		void GiveWeapon(int weapon, int ammo);
@@ -549,7 +620,8 @@ namespace VCMPCSharpPlugin
 		{
 			bool get()
 			{
-				return api->IsCameraLocked(this->ID);
+				if (this->Connected) return api->IsCameraLocked(this->ID);
+				else return 0;
 			}
 		}
 
@@ -558,21 +630,24 @@ namespace VCMPCSharpPlugin
 		{
 			bool get()
 			{
-				return api->GetPlayerStandingOnVehicle(this->ID);
+				if (this->Connected) return api->GetPlayerStandingOnVehicle(this->ID);
+				else return 0;
 			}
 		}
 		property bool StandingOnObject
 		{
 			bool get()
 			{
-				return api->GetPlayerStandingOnObject(this->ID);
+				if (this->Connected) return api->GetPlayerStandingOnObject(this->ID);
+				else return false;
 			}
 		}
 		property bool AFK
 		{
 			bool get()
 			{
-				return api->IsPlayerAway(this->ID);
+				if (this->Connected) return api->IsPlayerAway(this->ID);
+				else return false;
 			}
 		}
 		property CPlayer^ SpectateTarget

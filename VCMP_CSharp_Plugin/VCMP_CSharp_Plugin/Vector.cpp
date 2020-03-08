@@ -43,16 +43,16 @@ VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator/=(float scalar)
 
 VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator*=(Vector v)
 {
-	this->x /= v.x;
-	this->y /= v.y;
-	this->z /= v.z;
+	this->x *= v.x;
+	this->y *= v.y;
+	this->z *= v.z;
 	return this;
 }
 
 VCMPCSharpPlugin::Vector^ VCMPCSharpPlugin::Vector::operator*=(float scalar)
 {
-	this->x /= scalar;
-	this->y /= scalar;
-	this->z /= scalar;
+	this->x *= scalar;
+	this->y *= scalar;
+	this->z *= scalar;
 	return this;
 }

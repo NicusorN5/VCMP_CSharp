@@ -18,7 +18,7 @@ VCMPCSharpPlugin::ScriptCompiler::ScriptCompiler()
 			String^ path = "";
 			for (int j = 1; j < Data->Length; j++)
 			{
-				path += Data[j];
+				path += Data[j]+ ' ';
 				HasScripts = true;
 			}
 			char* pathp = CLIStringToCharA(path);
@@ -35,7 +35,7 @@ VCMPCSharpPlugin::ScriptCompiler::ScriptCompiler()
 			String^ path = "";
 			for (int j = 1; j < Data->Length; j++)
 			{
-				path += Data[j];
+				path += Data[j]+' ';
 			}
 			char* pathp = CLIStringToCharA(path);
 			PrintInfoColor();
