@@ -1,31 +1,19 @@
 #pragma once
 #include"Common.h"
-#include "VCMP_CSharp_Plugin.h"
 #include "Color.h"
 #include "Vector.h"
+#include "VCMPEnums.h"
 
 //Before you compiain, i know this class is supposed to be filled with null-checks of the player instance. Ok bye.
 using namespace System;
 namespace VCMPCSharpPlugin
 {
-	public enum class PlayerState : int
-	{
-		None = 0,
-		Normal = 1,
-		Aim = 2,
-		Driver = 3,
-		Passenger = 4,
-		EnterDriver = 5,
-		EnterPassenger = 6,
-		Exit = 7,
-		Unspawned = 8,
-	};
 	public ref class CPlayer
 	{
-		int ID_Copy;
+		int _id;
 		CPlayer();
 	public:
-		CPlayer(int ID);
+		CPlayer(int id);
 		property String^ Name 
 		{
 			void set(String^ value) 
@@ -48,13 +36,13 @@ namespace VCMPCSharpPlugin
 		property int ID {
 			int get() 
 			{
-				return ID_Copy;
+				return _id;
 			}
 
 			private: void set(int v)
 			{
 				this->Connected = api->IsPlayerConnected(v);
-				if (this->Connected) ID_Copy = v;
+				if (this->Connected) _id = v;
 			}
 		}
 		property bool Admin 
@@ -502,7 +490,8 @@ namespace VCMPCSharpPlugin
 		{
 			uint8_t get()
 			{
-				if(this->Connected) return api->GetPlayerAlpha(this->ID);
+				if (this->Connected) return api->GetPlayerAlpha(this->ID);
+				return 255;
 			}
 		}
 		property Vector^ AimDirection
@@ -566,16 +555,16 @@ namespace VCMPCSharpPlugin
 				else return 0;
 			}
 		}
-		property int Vehicle
+		property int VehicleID
 		{
 			int get()
 			{
 				if (this->Connected) return api->GetPlayerVehicleId(this->ID);
-				else return 0;
+				else return -1;
 			}
 			void set(int v)
 			{
-				if(this->Connected)api->PutPlayerInVehicle(this->ID, v, 0, 1, 1);
+				if(this->Connected)api->PutPlayerInVehicle(this->ID,v, 0, 1, 1);
 			}
 		}
 		property int Weapon

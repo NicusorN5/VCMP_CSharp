@@ -33,3 +33,47 @@ WORD GetConsoleTextAttribute(HANDLE hCon)
 	GetConsoleScreenBufferInfo(hCon, &con_info);
 	return con_info.wAttributes;
 }
+
+char* CLIStringToCharA(String^ str)
+{
+	if (String::IsNullOrEmpty(str) == true) return nullptr;
+	char* result = new char[str->Length + 1];
+	int i = 0;
+	for (; i < str->Length; i++)
+	{
+		result[i] = str[i];
+	}
+	result[i + 1] = 0;
+	return result;
+}
+
+String^ CharATOCLIString(char* str)
+{
+	if (str == nullptr) return nullptr;
+	String^ result = "";
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		result += str[i];
+	}
+	return result;
+}
+String^ CharATOCLIString(const char* str)
+{
+	if (str == nullptr) return nullptr;
+	String^ result = "";
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		result += str[i];
+	}
+	return result;
+}
+String^ CharATOCLIString(char* str, size_t l)
+{
+	if (str == nullptr) return nullptr;
+	String^ result = "";
+	for (int i = 0; i < l; i++)
+	{
+		result += str[i];
+	}
+	return result;
+}

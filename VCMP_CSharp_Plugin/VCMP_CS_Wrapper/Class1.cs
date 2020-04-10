@@ -6,6 +6,5 @@ class Test
     CPlayer p;
     Test()
     {
-        
     }
 }

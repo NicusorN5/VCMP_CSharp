@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <stdio.h>
 
+using namespace System;
+
 #ifdef WIN32
 #define DLL_EXPORT __declspec(dllexport)
 #else
@@ -27,3 +29,8 @@ void PrintInfoColor();
 void PrintModuleColor();
 
 WORD GetConsoleTextAttribute(HANDLE hCon);
+
+String^ CharATOCLIString(char* str, size_t l);
+String^ CharATOCLIString(char* str);
+String^ CharATOCLIString(const char* str);
+char* CLIStringToCharA(String^ str);

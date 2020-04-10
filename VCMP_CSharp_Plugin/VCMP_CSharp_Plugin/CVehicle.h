@@ -1,16 +1,26 @@
+#pragma once
 #include "VCMP.h"
 #include "Common.h"
 #include "CPlayer.h"
+#include "Vector.h"
 
 namespace VCMPCSharpPlugin
 {
+	ref class CPlayer;
 	public ref class CVehicle
 	{
+		int _id;
 		CVehicle();
 	public:
-		CVehicle(int id) : ID(id) {};
+		CVehicle(int id) : _id(id) {};
 		CVehicle(int Model, int world, Vector pos, float rotation, int c1, int c2);
-		int ID;
+		property int ID
+		{
+			int get()
+			{
+				return _id;
+			}
+		}
 		property bool Valid
 		{
 			bool get()
@@ -18,6 +28,7 @@ namespace VCMPCSharpPlugin
 				return api->CheckEntityExists(vcmpEntityPool::vcmpEntityPoolVehicle, this->ID);
 			}
 		}
+		
 		property CPlayer^ Driver
 		{
 			CPlayer^ get()
@@ -34,6 +45,6 @@ namespace VCMPCSharpPlugin
 			}
 		}
 		CPlayer^ GetOccupant(int slot);
-
+		
 	};
 }

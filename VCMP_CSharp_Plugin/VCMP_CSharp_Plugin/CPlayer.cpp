@@ -6,9 +6,9 @@ VCMPCSharpPlugin::CPlayer::CPlayer()
 	this->Connected = false;
 }
 
-VCMPCSharpPlugin::CPlayer::CPlayer(int ID)
+VCMPCSharpPlugin::CPlayer::CPlayer(int id)
 {
-	ID_Copy = ID;
+	_id = id;
 }
 
 void VCMPCSharpPlugin::CPlayer::Kick()
@@ -49,6 +49,7 @@ bool VCMPCSharpPlugin::CPlayer::PlayerStreamedToPlayer(CPlayer ^ p)
 bool VCMPCSharpPlugin::CPlayer::WorldCompatible(int world)
 {
 	if(this->Connected) return api->IsPlayerWorldCompatible(this->ID,world);
+	return false;
 }
 
 void VCMPCSharpPlugin::CPlayer::ForceSpawn()

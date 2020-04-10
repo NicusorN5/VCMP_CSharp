@@ -26,15 +26,44 @@ void VCMPCSharpPlugin::Server::PlaySound(int world, int sound, VCMPCSharpPlugin:
 
 void VCMPCSharpPlugin::Server::ShowMapObject(int model, VCMPCSharpPlugin::Vector ^ pos)
 {
-	api->ShowMapObject(model, pos->x, pos->y, pos->z);
+	api->ShowMapObject(model, (int16_t)pos->x, (int16_t)pos->y, (int16_t)pos->z);
 }
 
 void VCMPCSharpPlugin::Server::HideMapObject(int model, VCMPCSharpPlugin::Vector ^ pos)
 {
-	api->HideMapObject(model, pos->x, pos->y, pos->z);
+	api->HideMapObject(model, (int16_t)pos->x, (int16_t)pos->y, (int16_t)pos->z);
 }
 
 void VCMPCSharpPlugin::Server::ShowAllMapObjects()
 {
 	api->ShowAllMapObjects();
+}
+
+void VCMPCSharpPlugin::Server::MessagePlayer(String^ message, CPlayer^ player)
+{
+	if (player->Connected)
+	{
+		api->SendClientMessage(player->ID, 0xffffff, CLIStringToCharA(message));
+	}
+}
+void VCMPCSharpPlugin::Server::MessagePlayer(String^ message, CPlayer^ player,Color^ color)
+{
+	if (player->Connected)
+	{
+		api->SendClientMessage(player->ID, color->ToUint(), CLIStringToCharA(message));
+	}
+}
+void VCMPCSharpPlugin::Server::Message(String^ message)
+{
+	for (uint32_t i = 0; i < api->GetMaxPlayers(); i++)
+	{
+		MessagePlayer(message, gcnew CPlayer(i));
+	}
+}
+void VCMPCSharpPlugin::Server::Message(String^ message, Color^ color)
+{
+	for (uint32_t i = 0; i < api->GetMaxPlayers(); i++)
+	{
+		MessagePlayer(message, gcnew CPlayer(i),color);
+	}
 }

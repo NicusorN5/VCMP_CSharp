@@ -5,7 +5,6 @@
 #include "WastedSettings.h"
 #include "Vector.h"
 #include "CPlayer.h"
-#include "VCMP_Events.h"
 
 using namespace System;
 namespace VCMPCSharpPlugin
@@ -15,7 +14,7 @@ namespace VCMPCSharpPlugin
 	private:
 		Server() {}
 	public:
-		property String^ Name
+		static property String^ Name
 		{
 			String^ get()
 			{
@@ -30,7 +29,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerName(CLIStringToCharA(name));
 			}
 		}
-		property int MaxPlayers
+		static property int MaxPlayers
 		{
 			int get()
 			{
@@ -41,7 +40,7 @@ namespace VCMPCSharpPlugin
 				api->SetMaxPlayers(maxp);
 			}
 		}
-		property String^ Password
+		static property String^ Password
 		{
 			String^ get()
 			{
@@ -56,7 +55,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerPassword(CLIStringToCharA(pass));
 			}
 		}
-		property String^ Gamemode
+		static property String^ Gamemode
 		{
 			String^ get()
 			{
@@ -71,8 +70,8 @@ namespace VCMPCSharpPlugin
 				api->SetGameModeText(CLIStringToCharA(g));
 			}
 		}
-		void Shutdown();
-		property bool SyncFrameLimiter
+		static void Shutdown();
+		static property bool SyncFrameLimiter
 		{
 			bool get()
 			{
@@ -83,7 +82,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionSyncFrameLimiter, toggle);
 			}
 		}
-		property bool FrameLimiter
+		static property bool FrameLimiter
 		{
 			bool get()
 			{
@@ -94,7 +93,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionFrameLimiter, toggle);
 			}
 		}
-		property bool TaxiBoostJump
+		static property bool TaxiBoostJump
 		{
 			bool get()
 			{
@@ -105,7 +104,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionTaxiBoostJump, toggle);
 			}
 		}
-		property bool DriveOnWater
+		static property bool DriveOnWater
 		{
 			bool get()
 			{
@@ -116,7 +115,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionDriveOnWater, toggle);
 			}
 		}
-		property bool FastSwitch
+		static property bool FastSwitch
 		{
 			bool get()
 			{
@@ -127,7 +126,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionFastSwitch, toggle);
 			}
 		}
-		property bool FriendlyFire
+		static property bool FriendlyFire
 		{
 			bool get()
 			{
@@ -138,7 +137,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionFriendlyFire, toggle);
 			}
 		}
-		property bool DisableDriveBy
+		static property bool DisableDriveBy
 		{
 			bool get()
 			{
@@ -149,7 +148,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionDisableDriveBy, toggle);
 			}
 		}
-		property bool PerfectHandling
+		static property bool PerfectHandling
 		{
 			bool get()
 			{
@@ -160,7 +159,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionPerfectHandling, toggle);
 			}
 		}
-		property bool FlyingCars
+		static property bool FlyingCars
 		{
 			bool get()
 			{
@@ -171,7 +170,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionFlyingCars, toggle);
 			}
 		}
-		property bool JumpSwitch
+		static property bool JumpSwitch
 		{
 			bool get()
 			{
@@ -182,7 +181,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionJumpSwitch, toggle);
 			}
 		}
-		property bool PlayerMarkers
+		static property bool PlayerMarkers
 		{
 			bool get()
 			{
@@ -193,7 +192,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionShowMarkers, toggle);
 			}
 		}
-		property bool TeamOnlyMarkers
+		static property bool TeamOnlyMarkers
 		{
 			bool get()
 			{
@@ -204,7 +203,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionOnlyShowTeamMarkers, toggle);
 			}
 		}
-		property bool StuntBike
+		static property bool StuntBike
 		{
 			bool get()
 			{
@@ -215,7 +214,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionStuntBike, toggle);
 			}
 		}
-		property bool ShootInAir
+		static property bool ShootInAir
 		{
 			bool get()
 			{
@@ -226,7 +225,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionShootInAir, toggle);
 			}
 		}
-		property bool NameTags
+		static property bool NameTags
 		{
 			bool get()
 			{
@@ -237,7 +236,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionShowNameTags, toggle);
 			}
 		}
-		property bool DefaultJoinMessages
+		static property bool DefaultJoinMessages
 		{
 			bool get()
 			{
@@ -248,7 +247,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionJoinMessages, toggle);
 			}
 		}
-		property bool DefaultDeathMessages
+		static property bool DefaultDeathMessages
 		{
 			bool get()
 			{
@@ -259,7 +258,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionDeathMessages, toggle);
 			}
 		}
-		property bool ChatTags
+		static property bool ChatTags
 		{
 			bool get()
 			{
@@ -270,7 +269,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionChatTagsEnabled, toggle);
 			}
 		}
-		property bool Classes
+		static property bool Classes
 		{
 			bool get()
 			{
@@ -281,7 +280,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionUseClasses, toggle);
 			}
 		}
-		property bool Wallglitch
+		static property bool Wallglitch
 		{
 			bool get()
 			{
@@ -292,7 +291,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionWallGlitch, toggle);
 			}
 		}
-		property bool DisableBackFaceCulling
+		static property bool DisableBackFaceCulling
 		{
 			bool get()
 			{
@@ -303,7 +302,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionDisableBackfaceCulling, toggle);
 			}
 		}
-		property bool DisableHelicopterBladeDamage
+		static property bool DisableHelicopterBladeDamage
 		{
 			bool get()
 			{
@@ -314,7 +313,7 @@ namespace VCMPCSharpPlugin
 				api->SetServerOption(vcmpServerOption::vcmpServerOptionDisableHeliBladeDamage, toggle);
 			}
 		}
-		property WorldBounds^ Bounds
+		static property WorldBounds^ Bounds
 		{
 			WorldBounds^ get()
 			{
@@ -327,7 +326,7 @@ namespace VCMPCSharpPlugin
 				api->SetWorldBounds(bounds->MaxX, bounds->MinX, bounds->MaxY, bounds->MinY);
 			}
 		}
-		property WastedSettings^ SettingsWasted
+		static property WastedSettings^ SettingsWasted
 		{
 			WastedSettings^ get()
 			{
@@ -341,7 +340,7 @@ namespace VCMPCSharpPlugin
 				api->SetWastedSettings(w->DeathTime, w->FadeTime, w->FadeInSpeed, w->FadeOutSpeed, w->FadeColor->ToUint(), w->CorpseFadeDelay, w->CorpseFadeTime);
 			}
 		}
-		property int TimeRate
+		static property int TimeRate
 		{
 			int get()
 			{
@@ -352,7 +351,7 @@ namespace VCMPCSharpPlugin
 				api->SetTimeRate(time);
 			}
 		}
-		property int Hour
+		static property int Hour
 		{
 			int get()
 			{
@@ -363,7 +362,7 @@ namespace VCMPCSharpPlugin
 				api->SetHour(h);
 			}
 		}
-		property int Minute
+		static property int Minute
 		{
 			int get()
 			{
@@ -374,7 +373,7 @@ namespace VCMPCSharpPlugin
 				api->SetMinute(m);
 			}
 		}
-		property int Weather
+		static property int Weather
 		{
 			int get()
 			{
@@ -385,7 +384,7 @@ namespace VCMPCSharpPlugin
 				api->SetWeather(w);
 			}
 		}
-		property float Gravity
+		static property float Gravity
 		{
 			float get()
 			{
@@ -396,7 +395,7 @@ namespace VCMPCSharpPlugin
 				api->SetGravity(g);
 			}
 		}
-		property float GameSpeed
+		static property float GameSpeed
 		{
 			float get()
 			{
@@ -407,7 +406,7 @@ namespace VCMPCSharpPlugin
 				api->SetGameSpeed(speed);
 			}
 		}
-		property float WaterLevel
+		static property float WaterLevel
 		{
 			float get()
 			{
@@ -419,7 +418,7 @@ namespace VCMPCSharpPlugin
 				api->SetWaterLevel(water);
 			}
 		}
-		property float MaxFlightAltitude
+		static property float MaxFlightAltitude
 		{
 			float get()
 			{
@@ -430,7 +429,7 @@ namespace VCMPCSharpPlugin
 				api->SetMaximumFlightAltitude(altitute);
 			}
 		}
-		property uint8_t KillDelay
+		static property uint8_t KillDelay
 		{
 			uint8_t get()
 			{
@@ -441,8 +440,8 @@ namespace VCMPCSharpPlugin
 				api->SetKillCommandDelay(delay);
 			}
 		}
-		void ToggleKillCommand(bool toggle);
-		property float ForceVehiclesRespawnHeight
+		static void ToggleKillCommand(bool toggle);
+		static property float ForceVehiclesRespawnHeight
 		{
 			float get()
 			{
@@ -453,68 +452,15 @@ namespace VCMPCSharpPlugin
 				api->SetVehiclesForcedRespawnHeight(max_h);
 			}
 		}
-		void CreateExplosion(int world, int type, Vector^ pos, CPlayer ^guilt_player, bool onground);
-		void PlaySound(int world, int sound, Vector^ pos);
-		void ShowMapObject(int model, Vector^ pos);
-		void HideMapObject(int model, Vector^ pos);
-		void ShowAllMapObjects();
-		event OnServerInitialise^ OnServerStart;
-		event OnServerShutdown^ OnServerStop;
-		event OnServerFrame^ OnServerFrame;
-		
-		event  OnIncomingConnection^ OnPlayerConnecting;
-		event OnClientScriptData^ OnClientScriptData;
-
-		event OnPlayerConnect^ OnPlayerJoin;
-		event OnPlayerDisconnect^ OnPlayerQuit;
-
-		event  OnPlayerRequestClass^ OnPlayerRequestClass;
-		event  OnPlayerRequestSpawn^ OnPlayerRequestSpawn;
-		event OnPlayerSpawn^ OnPlayerSpawn;
-		event OnPlayerDeath^ OnPlayerDeath;
-		event OnPlayerUpdate^ OnPlayerUpdate;
-
-		event  OnPlayerRequestEnterVehicle^ OnPlayerEnterRequestEnterVehicle;
-		event OnPlayerEnterVehicle^ OnPlayerEnterVehicle;
-		event OnPlayerExitVehicle^ OnPlayerExitVehicle;
-
-		event OnPlayerNameChange^ OnPlayerNameChange;
-		event OnPlayerStateChange^ OnPlayerStateChange;
-		event OnPlayerActionChange^ OnPlayerActionChange;
-		event OnPlayerOnFireChange^ OnPlayerOnFireChange;
-		event OnPlayerCrouchChange^ OnPlayerCrouchChange;
-		event OnPlayerGameKeysChange^ OnPlayerKeysChange;
-		event OnPlayerBeginTyping^ OnPlayerBeginTyping;
-		event OnPlayerEndTyping^ OnPlayerEndTyping;
-		event OnPlayerAwayChange^ OnPlayerAwayChange;
-
-		event  OnPlayerMessage^ OnPlayerChat;
-		event  OnPlayerCommand^ OnPlayerCommand;
-		event  OnPlayerPrivateMessage^ OnPlayerPM;
-
-		event OnPlayerKeyBindDown^ OnPlayerKeyDown;
-		event OnPlayerKeyBindUp^ OnPlayerKeyUp;
-		event OnPlayerSpectate^ OnPlayerSpectate;
-		event OnPlayerCrashReport^ OnPlayerCrash;
-
-		event OnVehicleUpdate^ OnVehicleUpdate;
-		event OnVehicleExplode^ OnVehicleExplode;
-		event OnVehicleRespawn^ OnVehicleRespawn;
-
-		event OnObjectShot^ OnObjectShot;
-		event OnObjectTouched^ OnObjectBump;
-		event  OnPickupPickAttempt^ OnPickupPickAttempt;
-		event OnPickupPicked^ OnPickupCollected;
-		event OnPickupRespawn^ OnPickupRespawn;
-
-		event OnCheckpointEntered^ OnCheckpointEnter;
-		event OnCheckpointExited^ OnCheckpointExit;
-
-		//event OnEntityPoolChange(vcmpEntityPool entityType, int32_t entityId, uint8_t isDeleted);
-		event OnServerPerformanceReport^ OnPerformanceReport;
-
-		// TODO: MOVE LATER
-		event OnPlayerModuleList^ OnPlayerModuleList;
+		static void CreateExplosion(int world, int type, Vector^ pos, CPlayer ^guilt_player, bool onground);
+		static void PlaySound(int world, int sound, Vector^ pos);
+		static void ShowMapObject(int model, Vector^ pos);
+		static void HideMapObject(int model, Vector^ pos);
+		static void ShowAllMapObjects();
+		static void MessagePlayer(String^ message, CPlayer^ player);
+		static void MessagePlayer(String^ message, CPlayer^ player,Color^ color);
+		static void Message(String^ message);
+		static void Message(String^ message,Color^ color);
 };
 
 }

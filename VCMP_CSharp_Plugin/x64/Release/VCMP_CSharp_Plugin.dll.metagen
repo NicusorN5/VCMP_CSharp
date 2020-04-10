@@ -9,10 +9,24 @@ Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e0
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Class VCMPCSharpPlugin.CCheckPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class VCMPCSharpPlugin.Vector: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Single, Single, Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class VCMPCSharpPlugin.CObject: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Single x : Public
+    Single y : Public
+    Single z : Public
+  Properties:
+    Single Length 'get ' : 
+  Methods:
+    op_AdditionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_SubtractionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_DivisionAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
+    op_DivisionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    op_MultiplicationAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
+    op_MultiplicationAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
+    get_Length(): PrivateScope, Public, HideBySig, SpecialName
 Class VCMPCSharpPlugin.Color: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(Byte, Byte, Byte): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -23,41 +37,30 @@ Class VCMPCSharpPlugin.Color: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
   Methods:
     ToUint(): PrivateScope, Public, HideBySig
     FromUInt(UInt32): PrivateScope, Public, Static, HideBySig
-Class VCMPCSharpPlugin.CPickup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class VCMPCSharpPlugin.ScriptCompiler: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Fields:
-    System.String ClassName : Public
-    Boolean HasScripts : Public
-    System.Collections.Generic.List`1[System.String] Files : Public, Static
-    System.Collections.Generic.List`1[System.String] Assemblies : Public, Static
-  Methods:
-    Initialize(): PrivateScope, Public, HideBySig
-    CompileAll(): PrivateScope, Public, HideBySig
-Class VCMPCSharpPlugin.Vector: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(Single, Single, Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Fields:
-    Single x : Public
-    Single y : Public
-    Single z : Public
-  Methods:
-    op_AdditionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
-    op_SubtractionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
-    op_DivisionAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
-    op_DivisionAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
-    op_MultiplicationAssignment(Single): PrivateScope, Public, HideBySig, SpecialName
-    op_MultiplicationAssignment(Vector IsByValue): PrivateScope, Public, HideBySig, SpecialName
-Class VCMPCSharpPlugin.CVehicle: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class VCMPCSharpPlugin.CCheckPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Int32, Boolean, VCMPCSharpPlugin.Vector, VCMPCSharpPlugin.Color, Byte, Single): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Fields:
-    Int32 ID : Public
+  Properties:
+    Int32 ID   'get ' : 
+  Methods:
+    get_ID(): PrivateScope, Public, HideBySig, SpecialName
+Class VCMPCSharpPlugin.CObject: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Int32, Int32, VCMPCSharpPlugin.Vector, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:
     Boolean Valid 'get ' : 
+    Int32 ID   'get set' : 
   Methods:
+    get_ID(): PrivateScope, Public, HideBySig, SpecialName
+    set_ID(Int32): PrivateScope, Public, HideBySig, SpecialName
     get_Valid(): PrivateScope, Public, HideBySig, SpecialName
+Class VCMPCSharpPlugin.CPickup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Int32, Int32, Int32, VCMPCSharpPlugin.Vector, Byte, Boolean): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Int32 ID   'get ' : 
+  Methods:
+    get_ID(): PrivateScope, Public, HideBySig, SpecialName
 Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:
@@ -69,8 +72,7 @@ Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     Int32 WeaponSlot 'get set' : 
     Int32 Ammo 'get ' : 
     Int32 Weapon 'get set' : 
-    Int32 VehicleStatus 'get ' : 
-    VCMPCSharpPlugin.CVehicle Vehicle 'get set' : 
+    Int32 VehicleID 'get set' : 
     Int32 GameKeys 'get ' : 
     Int32 Action 'get ' : 
     Boolean Crouching 'get ' : 
@@ -120,9 +122,8 @@ Class VCMPCSharpPlugin.CPlayer: AutoLayout, AnsiClass, Class, Public, BeforeFiel
   Methods:
     get_Action(): PrivateScope, Public, HideBySig, SpecialName
     get_GameKeys(): PrivateScope, Public, HideBySig, SpecialName
-    get_Vehicle(): PrivateScope, Public, HideBySig, SpecialName
-    set_Vehicle(CVehicle): PrivateScope, Public, HideBySig, SpecialName
-    get_VehicleStatus(): PrivateScope, Public, HideBySig, SpecialName
+    get_VehicleID(): PrivateScope, Public, HideBySig, SpecialName
+    set_VehicleID(Int32): PrivateScope, Public, HideBySig, SpecialName
     get_Weapon(): PrivateScope, Public, HideBySig, SpecialName
     set_Weapon(Int32): PrivateScope, Public, HideBySig, SpecialName
     get_Ammo(): PrivateScope, Public, HideBySig, SpecialName
@@ -238,3 +239,153 @@ Struct VCMPCSharpPlugin.PlayerState: AutoLayout, AnsiClass, Class, Public, Seale
     VCMPCSharpPlugin.PlayerState EnterPassenger = 6 : Public, Static, Literal, HasDefault
     VCMPCSharpPlugin.PlayerState Exit = 7 : Public, Static, Literal, HasDefault
     VCMPCSharpPlugin.PlayerState Unspawned = 8 : Public, Static, Literal, HasDefault
+Struct VCMPCSharpPlugin.DisconnectReason: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    VCMPCSharpPlugin.DisconnectReason Timeout = 0 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.DisconnectReason Quit = 1 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.DisconnectReason Kick = 2 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.DisconnectReason Crash = 3 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.DisconnectReason AntiCheat = 4 : Public, Static, Literal, HasDefault
+Struct VCMPCSharpPlugin.BodyPart: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    VCMPCSharpPlugin.BodyPart Body = 0 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.BodyPart Torso = 1 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.BodyPart LeftArm = 2 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.BodyPart RightArm = 3 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.BodyPart LeftLeg = 4 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.BodyPart RightLeg = 5 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.BodyPart Head = 6 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.BodyPart InVehicle = 7 : Public, Static, Literal, HasDefault
+Struct VCMPCSharpPlugin.PlayerUpdate: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    VCMPCSharpPlugin.PlayerUpdate Normal = 0 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerUpdate Aiming = 1 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerUpdate Driver = 2 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.PlayerUpdate Passenger = 3 : Public, Static, Literal, HasDefault
+Struct VCMPCSharpPlugin.VehicleUpdate: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    VCMPCSharpPlugin.VehicleUpdate DriverSync = 0 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.VehicleUpdate OtherSync = 1 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.VehicleUpdate Position = 2 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.VehicleUpdate Health = 4 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.VehicleUpdate Colour = 5 : Public, Static, Literal, HasDefault
+    VCMPCSharpPlugin.VehicleUpdate Rotation = 6 : Public, Static, Literal, HasDefault
+Class VCMPCSharpPlugin.CVehicle: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Int32, Int32, VCMPCSharpPlugin.Vector, Single, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    VCMPCSharpPlugin.CPlayer Driver 'get set' : 
+    Boolean Valid 'get ' : 
+    Int32 ID   'get ' : 
+  Methods:
+    get_ID(): PrivateScope, Public, HideBySig, SpecialName
+    get_Valid(): PrivateScope, Public, HideBySig, SpecialName
+    get_Driver(): PrivateScope, Public, HideBySig, SpecialName
+    set_Driver(CPlayer): PrivateScope, Public, HideBySig, SpecialName
+    GetOccupant(Int32): PrivateScope, Public, HideBySig
+Interface VCMPCSharpPlugin.ServerInstance: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
+  Methods:
+    OnServerInitialise(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnServerShutdown(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnServerFrame(Single): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnIncomingConnection(String, Int32, String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnClientScriptData(CPlayer, ValueType[]): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerConnect(CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerDisconnect(CPlayer, Enum DisconnectReason IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerRequestClass(CPlayer, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerRequestSpawn(CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerSpawn(CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerDeath(CPlayer, CPlayer, Int32, Enum BodyPart IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerUpdate(CPlayer, PlayerUpdate): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerRequestEnterVehicle(CPlayer, CVehicle, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerEnterVehicle(CPlayer, CVehicle, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerExitVehicle(CPlayer, CVehicle): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerNameChange(CPlayer, String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerStateChange(CPlayer, PlayerState, PlayerState): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerActionChange(CPlayer, Int32, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerOnFireChange(CPlayer, ValueType Byte IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerCrouchChange(CPlayer, ValueType Byte IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerGameKeysChange(CPlayer, Int32, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerBeginTyping(CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerEndTyping(CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerAwayChange(CPlayer, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerMessage(CPlayer, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerCommand(CPlayer, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerPrivateMessage(CPlayer, Int32, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerKeyBindDown(CPlayer, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerKeyBindUp(CPlayer, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerSpectate(CPlayer, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerCrashReport(CPlayer, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnVehicleUpdate(CVehicle, vcmpVehicleUpdate): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnVehicleExplode(CVehicle): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnVehicleRespawn(CVehicle): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnObjectShot(CObject, CPlayer, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnObjectTouched(CObject, CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPickupPickAttempt(CPickup, CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPickupPicked(CPickup, CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPickupRespawn(CPickup): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnCheckpointEntered(CCheckPoint, CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnCheckpointExited(CCheckPoint, CPlayer): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnServerPerformanceReport(UInt64, String[], UInt64*): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnPlayerModuleList(CPlayer, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Class VCMPCSharpPlugin.ScriptCompiler: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ClassName : Public
+    Boolean HasScripts : Public
+    System.Collections.Generic.List`1[System.String] Files : Public, Static
+    System.Collections.Generic.List`1[System.String] Assemblies : Public, Static
+  Methods:
+    Initialize(): PrivateScope, Public, HideBySig
+    CompileAll(): PrivateScope, Public, HideBySig
+    CallserverInitialise(): PrivateScope, Public, HideBySig
+    CallServerShutdown(): PrivateScope, Public, HideBySig
+    CallServerFrame(Single): PrivateScope, Public, HideBySig
+    CallIncomingConnection(SByte*, UInt64, SByte*, SByte*): PrivateScope, Public, HideBySig
+    CallClientScriptData(Int32, Byte*, UInt64): PrivateScope, Public, HideBySig
+    CallPlayerConnection(Int32): PrivateScope, Public, HideBySig
+    CallPlayerDisconnect(Int32, vcmpDisconnectReason): PrivateScope, Public, HideBySig
+    CallPlayerRequestClass(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerRequestSpawn(Int32): PrivateScope, Public, HideBySig
+    CallPlayerSpawn(Int32): PrivateScope, Public, HideBySig
+    CallPlayerDeath(Int32, Int32, Int32, vcmpBodyPart): PrivateScope, Public, HideBySig
+    CallPlayerUpdate(Int32, vcmpPlayerUpdate): PrivateScope, Public, HideBySig
+    CallPlayerRequestEnterVehicle(Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerEnterVehicle(Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerExitVehicle(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerNameChange(Int32, SByte*, SByte*): PrivateScope, Public, HideBySig
+    CallPlayerStateChange(Int32, vcmpPlayerState, vcmpPlayerState): PrivateScope, Public, HideBySig
+    CallPlayerActionChange(Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerOnFireChange(Int32, Byte): PrivateScope, Public, HideBySig
+    CallPlayerCrouchChange(Int32, Byte): PrivateScope, Public, HideBySig
+    CallPlayerGameKeysChange(Int32, UInt32, UInt32): PrivateScope, Public, HideBySig
+    CallPlayerBeginTyping(Int32): PrivateScope, Public, HideBySig
+    CallPlayerEndTyping(Int32): PrivateScope, Public, HideBySig
+    CallPlayerAwayChange(Int32, Byte): PrivateScope, Public, HideBySig
+    CallPlayerMessage(Int32, SByte*): PrivateScope, Public, HideBySig
+    CallPlayerCommand(Int32, SByte*): PrivateScope, Public, HideBySig
+    CallPlayerPrivateMessage(Int32, Int32, SByte*): PrivateScope, Public, HideBySig
+    CallPlayerKeyBindDown(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerKeyBindUp(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerSpectate(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPlayerCrashReport(Int32, SByte*): PrivateScope, Public, HideBySig
+    CallVehicleUpdate(Int32, vcmpVehicleUpdate): PrivateScope, Public, HideBySig
+    CallVehicleExplode(Int32): PrivateScope, Public, HideBySig
+    CallVehicleRespawn(Int32): PrivateScope, Public, HideBySig
+    CallObjectShot(Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    CallObjectTouched(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPickupPickAttempt(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPickupPicked(Int32, Int32): PrivateScope, Public, HideBySig
+    CallPickupRespawn(Int32): PrivateScope, Public, HideBySig
+    CallCheckpointEntered(Int32, Int32): PrivateScope, Public, HideBySig
+    CallCheckpointExited(Int32, Int32): PrivateScope, Public, HideBySig
+    CallServerPerformanceReport(UInt64, SByte**, UInt64*): PrivateScope, Public, HideBySig
+    CallPlayerModuleList(Int32, SByte*): PrivateScope, Public, HideBySig

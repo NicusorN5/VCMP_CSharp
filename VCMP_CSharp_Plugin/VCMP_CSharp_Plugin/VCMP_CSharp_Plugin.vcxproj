@@ -195,10 +195,11 @@
     <ClInclude Include="CVehicle.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="ServerInstance.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="VCMP.h" />
+    <ClInclude Include="VCMPEnums.h" />
     <ClInclude Include="VCMP_CSharp_Plugin.h" />
-    <ClInclude Include="VCMP_Events.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="WastedSettings.h" />
     <ClInclude Include="WorldBounds.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="CVehicle.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Server.cpp" />
+    <ClCompile Include="ServerInstance.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Server Debug|Win32'">Create</PrecompiledHeader>
