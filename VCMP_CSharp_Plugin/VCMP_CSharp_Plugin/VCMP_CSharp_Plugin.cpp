@@ -2,7 +2,7 @@
 
 #include "VCMP_CSharp_Plugin.h"
 
-VCMPCSharpPlugin::ScriptCompiler::ScriptCompiler()
+void VCMPCSharpPlugin::ScriptCompiler::Load()
 {
 	//Read configuration
 	int files_counter = 0;
@@ -68,60 +68,60 @@ void VCMPCSharpPlugin::ScriptCompiler::Initialize()
 	servertype = compiledCode->GetType(ClassName);
 	serverinstance = compiledCode->CreateInstance(ClassName, true);
 
-	this->_serverInitialise = servertype->GetMethod("OnServerInitialise");
-	this->_ServerShutdown = servertype->GetMethod("OnServerShutdown");
-	this->_ServerFrame = servertype->GetMethod("OnServerFrame");
+	_serverInitialise = servertype->GetMethod("OnServerInitialise");
+	_ServerShutdown = servertype->GetMethod("OnServerShutdown");
+	_ServerFrame = servertype->GetMethod("OnServerFrame");
 
-	this->_IncomingConnection = servertype->GetMethod("OnIncomingConnection");
-	this->_ClientScriptData = servertype->GetMethod("OnClientScriptData");
-	this->_PlayerConnection = servertype->GetMethod("OnPlayerConnect");
-	this->_PlayerDisconnect = servertype->GetMethod("OnPlayerDisconnect");
+	_IncomingConnection = servertype->GetMethod("OnIncomingConnection");
+	_ClientScriptData = servertype->GetMethod("OnClientScriptData");
+	_PlayerConnection = servertype->GetMethod("OnPlayerConnect");
+	_PlayerDisconnect = servertype->GetMethod("OnPlayerDisconnect");
 
-	this->_PlayerRequestClass = servertype->GetMethod("OnPlayerRequestClass");
-	this->_PlayerRequestSpawn = servertype->GetMethod("OnPlayerRequestSpawn");
-	this->_PlayerSpawn = servertype->GetMethod("OnPlayerSpawn");
-	this->_PlayerDeath = servertype->GetMethod("OnPlayerDeath");
+	_PlayerRequestClass = servertype->GetMethod("OnPlayerRequestClass");
+	_PlayerRequestSpawn = servertype->GetMethod("OnPlayerRequestSpawn");
+	_PlayerSpawn = servertype->GetMethod("OnPlayerSpawn");
+	_PlayerDeath = servertype->GetMethod("OnPlayerDeath");
 
-	this->_PlayerUpdate = servertype->GetMethod("OnPlayerUpdate");
-	this->_PlayerRequestEnterVehicle = servertype->GetMethod("OnPlayerRequestEnterVehicle");
-	this->_PlayerEnterVehicle = servertype->GetMethod("OnPlayerEnterVehicle");
-	this->_PlayerExitVehicle = servertype->GetMethod("OnPlayerExitVehicle");
+	_PlayerUpdate = servertype->GetMethod("OnPlayerUpdate");
+	_PlayerRequestEnterVehicle = servertype->GetMethod("OnPlayerRequestEnterVehicle");
+	_PlayerEnterVehicle = servertype->GetMethod("OnPlayerEnterVehicle");
+	_PlayerExitVehicle = servertype->GetMethod("OnPlayerExitVehicle");
 
-	this->_PlayerNameChange = servertype->GetMethod("OnPlayerNameChange");
-	this->_PlayerStateChange = servertype->GetMethod("OnPlayerStateChange");
-	this->_PlayerActionChange = servertype->GetMethod("OnPlayerActionChange");
-	this->_PlayerOnFireChange = servertype->GetMethod("OnPlayerOnFireChange");
-	this->_PlayerCrouchChange = servertype->GetMethod("OnPlayerCrouchChange");
-	this->_PlayerGameKeysChange = servertype->GetMethod("OnPlayerGameKeysChange");
-	this->_PlayerBeginTyping = servertype->GetMethod("OnPlayerBeginTyping");
-	this->_PlayerEndTyping = servertype->GetMethod("OnPlayerEndTyping");
-	this->_PlayerAwayChange = servertype->GetMethod("OnPlayerAwayChange");
+	_PlayerNameChange = servertype->GetMethod("OnPlayerNameChange");
+	_PlayerStateChange = servertype->GetMethod("OnPlayerStateChange");
+	_PlayerActionChange = servertype->GetMethod("OnPlayerActionChange");
+	_PlayerOnFireChange = servertype->GetMethod("OnPlayerOnFireChange");
+	_PlayerCrouchChange = servertype->GetMethod("OnPlayerCrouchChange");
+	_PlayerGameKeysChange = servertype->GetMethod("OnPlayerGameKeysChange");
+	_PlayerBeginTyping = servertype->GetMethod("OnPlayerBeginTyping");
+	_PlayerEndTyping = servertype->GetMethod("OnPlayerEndTyping");
+	_PlayerAwayChange = servertype->GetMethod("OnPlayerAwayChange");
 
-	this->_PlayerMessage = servertype->GetMethod("OnPlayerMessage");
-	this->_PlayerCommand = servertype->GetMethod("OnPlayerCommand");
-	this->_PlayerPrivateMessage = servertype->GetMethod("OnPlayerPrivateMessage");
+	_PlayerMessage = servertype->GetMethod("OnPlayerMessage");
+	_PlayerCommand = servertype->GetMethod("OnPlayerCommand");
+	_PlayerPrivateMessage = servertype->GetMethod("OnPlayerPrivateMessage");
 
-	this->_PlayerKeyBindDown = servertype->GetMethod("OnPlayerKeyBindDown");
-	this->_PlayerKeyBindUp = servertype->GetMethod("OnPlayerKeyBindUp");
-	this->_PlayerSpectate = servertype->GetMethod("OnPlayerSpectate");
-	this->_PlayerCrashReport = servertype->GetMethod("OnPlayerCrashReport");
+	_PlayerKeyBindDown = servertype->GetMethod("OnPlayerKeyBindDown");
+	_PlayerKeyBindUp = servertype->GetMethod("OnPlayerKeyBindUp");
+	_PlayerSpectate = servertype->GetMethod("OnPlayerSpectate");
+	_PlayerCrashReport = servertype->GetMethod("OnPlayerCrashReport");
 
-	this->_VehicleUpdate = servertype->GetMethod("OnVehicleUpdate");
-	this->_VehicleExplode = servertype->GetMethod("OnVehicleExplode");
-	this->_VehicleRespawn = servertype->GetMethod("OnVehicleRespawn");
+	_VehicleUpdate = servertype->GetMethod("OnVehicleUpdate");
+	_VehicleExplode = servertype->GetMethod("OnVehicleExplode");
+	_VehicleRespawn = servertype->GetMethod("OnVehicleRespawn");
 
-	this->_ObjectShot = servertype->GetMethod("OnObjectShot");
-	this->_ObjectTouched = servertype->GetMethod("OnObjectTouched");
+	_ObjectShot = servertype->GetMethod("OnObjectShot");
+	_ObjectTouched = servertype->GetMethod("OnObjectTouched");
 
-	this->_PickupPickAttempt = servertype->GetMethod("OnPickupPickAttempt");
-	this->_PickupPicked = servertype->GetMethod("OnPickupPicked");
-	this->_PickupRespawn = servertype->GetMethod("OnPickupRespawn");
+	_PickupPickAttempt = servertype->GetMethod("OnPickupPickAttempt");
+	_PickupPicked = servertype->GetMethod("OnPickupPicked");
+	_PickupRespawn = servertype->GetMethod("OnPickupRespawn");
 
-	this->_CheckpointEntered = servertype->GetMethod("OnCheckpointEntered");
-	this->_CheckpointExited = servertype->GetMethod("OnCheckpointExited");
+	_CheckpointEntered = servertype->GetMethod("OnCheckpointEntered");
+	_CheckpointExited = servertype->GetMethod("OnCheckpointExited");
 
-	this->_ServerPerformanceReport = servertype->GetMethod("OnServerPerformanceReport");
-	this->_PlayerModuleList = servertype->GetMethod("OnPlayerModuleList");
+	_ServerPerformanceReport = servertype->GetMethod("OnServerPerformanceReport");
+	_PlayerModuleList = servertype->GetMethod("OnPlayerModuleList");
 }
 bool VCMPCSharpPlugin::ScriptCompiler::CompileAll()
 {
@@ -192,7 +192,7 @@ uint8_t VCMPCSharpPlugin::ScriptCompiler::CallIncomingConnection(char* playerNam
 array<uint8_t>^ CreateArrayFromBuffer(const uint8_t* data, size_t size)
 {
 	array<uint8_t>^ r = gcnew array<uint8_t>((int)size);
-	for (int i = 0; i < size; i++)
+	for (unsigned i = 0; i < size; i++)
 	{
 		r[i] = data[i];
 	}
@@ -228,24 +228,26 @@ void VCMPCSharpPlugin::ScriptCompiler::CallPlayerDisconnect(int32_t playerId, vc
 	}
 }
 
-void VCMPCSharpPlugin::ScriptCompiler::CallPlayerRequestClass(int32_t playerId, int32_t offset)
+uint8_t VCMPCSharpPlugin::ScriptCompiler::CallPlayerRequestClass(int32_t playerId, int32_t offset)
 {
 	if (_PlayerRequestClass != nullptr)
 	{
 		array<Object^>^ args = gcnew array<Object^>(2);
 		args[0] = gcnew CPlayer(playerId);
 		args[1] = offset;
-		_PlayerRequestClass->Invoke(serverinstance, args);
+		return (uint8_t)_PlayerRequestClass->Invoke(serverinstance, args);
 	}
+	else return 1;
 }
-void VCMPCSharpPlugin::ScriptCompiler::CallPlayerRequestSpawn(int32_t playerId)
+uint8_t VCMPCSharpPlugin::ScriptCompiler::CallPlayerRequestSpawn(int32_t playerId)
 {
 	if (_PlayerRequestSpawn != nullptr)
 	{
 		array<Object^>^ args = gcnew array<Object^>(1);
 		args[0] = gcnew CPlayer(playerId);
-		_PlayerRequestSpawn->Invoke(serverinstance, args);
+		return (uint8_t)_PlayerRequestSpawn->Invoke(serverinstance, args);
 	}
+	else return 1;
 }
 void VCMPCSharpPlugin::ScriptCompiler::CallPlayerSpawn(int32_t playerId)
 {
@@ -279,15 +281,16 @@ void VCMPCSharpPlugin::ScriptCompiler::CallPlayerUpdate(int32_t playerId, vcmpPl
 		_PlayerDeath->Invoke(serverinstance, args);
 	}
 }
-void VCMPCSharpPlugin::ScriptCompiler::CallPlayerRequestEnterVehicle(int32_t playerId, int32_t vehicleId, int32_t slotIndex)
+uint8_t VCMPCSharpPlugin::ScriptCompiler::CallPlayerRequestEnterVehicle(int32_t playerId, int32_t vehicleId, int32_t slotIndex)
 {
 	if (_PlayerRequestEnterVehicle != nullptr)
 	{
 		array<Object^>^ args = gcnew array<Object^>(2);
 		args[0] = gcnew CPlayer(playerId);
 		args[1] = gcnew CVehicle(vehicleId);
-		_PlayerRequestEnterVehicle->Invoke(serverinstance, args);
+		return (uint8_t)_PlayerRequestEnterVehicle->Invoke(serverinstance, args);
 	}
+	else return 1;
 }
 void VCMPCSharpPlugin::ScriptCompiler::CallPlayerEnterVehicle(int32_t playerId, int32_t vehicleId, int32_t slotIndex)
 {
@@ -404,27 +407,29 @@ void VCMPCSharpPlugin::ScriptCompiler::CallPlayerAwayChange(int32_t playerId, ui
 	}
 }
 
-void VCMPCSharpPlugin::ScriptCompiler::CallPlayerMessage(int32_t playerId, const char* message)
+uint8_t VCMPCSharpPlugin::ScriptCompiler::CallPlayerMessage(int32_t playerId, const char* message)
 {
 	if (_PlayerMessage != nullptr)
 	{
 		array<Object^>^ args = gcnew array<Object^>(2);
 		args[0] = gcnew CPlayer(playerId);
 		args[1] = CharATOCLIString(message);
-		_PlayerMessage->Invoke(serverinstance, args);
+		return (uint8_t)_PlayerMessage->Invoke(serverinstance, args);
 	}
+	return 1;
 }
-void VCMPCSharpPlugin::ScriptCompiler::CallPlayerCommand(int32_t playerId, const char* message)
+uint8_t VCMPCSharpPlugin::ScriptCompiler::CallPlayerCommand(int32_t playerId, const char* message)
 {
 	if (_PlayerCommand != nullptr)
 	{
 		array<Object^>^ args = gcnew array<Object^>(2);
 		args[0] = gcnew CPlayer(playerId);
 		args[1] = CharATOCLIString(message);
-		_PlayerCommand->Invoke(serverinstance, args);
+		return (uint8_t)_PlayerCommand->Invoke(serverinstance, args);
 	}
+	return 1;
 }
-void VCMPCSharpPlugin::ScriptCompiler::CallPlayerPrivateMessage(int32_t playerId, int32_t targetPlayerId, const char* message)
+uint8_t VCMPCSharpPlugin::ScriptCompiler::CallPlayerPrivateMessage(int32_t playerId, int32_t targetPlayerId, const char* message)
 {
 	if (_PlayerPrivateMessage != nullptr)
 	{
@@ -432,8 +437,9 @@ void VCMPCSharpPlugin::ScriptCompiler::CallPlayerPrivateMessage(int32_t playerId
 		args[0] = gcnew CPlayer(playerId);
 		args[1] = gcnew CPlayer(targetPlayerId);
 		args[2] = CharATOCLIString(message);
-		_PlayerPrivateMessage->Invoke(serverinstance, args);
+		return (uint8_t)_PlayerPrivateMessage->Invoke(serverinstance, args);
 	}
+	else return 1;
 }
 
 void VCMPCSharpPlugin::ScriptCompiler::CallPlayerKeyBindDown(int32_t playerId, int32_t bindId)
@@ -528,15 +534,16 @@ void VCMPCSharpPlugin::ScriptCompiler::CallObjectTouched(int32_t objectId, int32
 	}
 }
 
-void VCMPCSharpPlugin::ScriptCompiler::CallPickupPickAttempt(int32_t pickupId, int32_t playerId)
+uint8_t VCMPCSharpPlugin::ScriptCompiler::CallPickupPickAttempt(int32_t pickupId, int32_t playerId)
 {
 	if (_PickupPickAttempt != nullptr)
 	{
 		array<Object^>^ args = gcnew array<Object^>(2);
 		args[0] = gcnew CPickup(pickupId);
 		args[1] = gcnew CPlayer(playerId);
-		_PickupPickAttempt->Invoke(serverinstance, args);
+		return (uint8_t)_PickupPickAttempt->Invoke(serverinstance, args);
 	}
+	else return 1;
 }
 void VCMPCSharpPlugin::ScriptCompiler::CallPickupPicked(int32_t pickupId, int32_t playerId)
 {
@@ -587,7 +594,7 @@ void VCMPCSharpPlugin::ScriptCompiler::CallServerPerformanceReport(size_t entryC
 		args[0] = entryCount;
 		array<String^>^ desc = gcnew array<String^>((int)entryCount);
 		array<uint64_t>^ t = gcnew array<uint64_t>((int)entryCount);
-		for (int i = 0; i < entryCount; i++)
+		for (unsigned i = 0; i < entryCount; i++)
 		{
 			desc[i] = CharATOCLIString(descriptions[i]);
 			t[i] = times[i];

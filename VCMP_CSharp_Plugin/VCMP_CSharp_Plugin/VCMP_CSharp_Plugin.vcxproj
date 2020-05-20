@@ -193,6 +193,7 @@
     <ClInclude Include="CPickup.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CVehicle.h" />
+    <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="ServerInstance.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CVehicle.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="ServerInstance.cpp" />
     <ClCompile Include="stdafx.cpp">

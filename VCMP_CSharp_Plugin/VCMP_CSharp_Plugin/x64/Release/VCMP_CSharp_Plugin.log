@@ -1,7 +1,7 @@
 ﻿  Main.cpp
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Main.cpp(1,10): fatal error C1853: 'x64\Release\VCMP_CSharp_Plugin.pch' precompiled header file is from a different version of the compiler, or the precompiled header is C++ and you are using it from C (or vice versa)
   Server.cpp
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Server.cpp(1,10): fatal error C1853: 'x64\Release\VCMP_CSharp_Plugin.pch' precompiled header file is from a different version of the compiler, or the precompiled header is C++ and you are using it from C (or vice versa)
   VCMP_CSharp_Plugin.cpp
-C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin.cpp(588,58): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin.cpp(1,10): fatal error C1853: 'x64\Release\VCMP_CSharp_Plugin.pch' precompiled header file is from a different version of the compiler, or the precompiled header is C++ and you are using it from C (or vice versa)
   Generating Code...
-     Creating library C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.lib and object C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.exp
-  VCMP_CSharp_Plugin.vcxproj -> C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\x64\Release\VCMP_CSharp_Plugin.dll

@@ -1,0 +1,1 @@
+C:\Users\Athanatos\Documents\GitHub\VCMP_CSharp\VCMP_CSharp_Plugin\VCMP_CSharp_Plugin\Release\VCMP_CSharp_Plugin.vcxprojAssemblyReference.cache
